@@ -90,3 +90,4 @@
 32. devTools 때문에 캐시에 있던 데이터를 가져오던 과정에서 ClassCastException이 발생함. 이는 `.defaultCacheConfig(Thread.currentThread().getContextClassLoader())` 로 설정변경을 해서 해결함.
 33. 게시판 전체 데이터를 캐시로 활용할려 했는데, 누가 글을 쓰면 유동적으로 변해야 하는 데이터가 캐시에서는 변하지 않고 유지되고 있기 때문에 캐시로 사용하기에는 바람직하지 않은 것 같음.
 
+다시
