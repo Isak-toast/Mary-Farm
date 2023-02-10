@@ -1,4 +1,7 @@
 
+slave_front = 'slave1'
+slave_back = 'slave2'
+
 pipeline {
     agent none
     options {
@@ -12,24 +15,24 @@ pipeline {
                     when{
                         branch 'isak';
                     }
-                    node('slave1'){
-                        steps{
+                    steps{
+                        node(slave_front){
                             updateGitlabCommitStatus name: 'build', state: 'running'
+                            echo "${env.BRANCH_NAME} ->  Android running"
                             build(
-                                echo "${env.BRANCH_NAME} ->  Android running"
-
-                                job: "Dev-Android-pipeline", 
+                                job: "POD-Android-pipeline", 
                                 parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
                             )
                         }
                     }
                 }
-                stage('only master for infra'){
+                
+                stage('only master for all service'){
                     when{
                         branch 'isak';
                     }
-                    node('slave2'){
-                        steps{
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             echo "${env.BRANCH_NAME} ->  spring CI running"
                             build(
@@ -43,8 +46,8 @@ pipeline {
                     when{
                         branch 'maryfarm-board-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps {
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -58,8 +61,8 @@ pipeline {
                     when{
                         branch 'maryfarm-calendar-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -73,8 +76,8 @@ pipeline {
                     when{
                         branch 'maryfarm-chat-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -87,8 +90,8 @@ pipeline {
                     when{
                         branch 'maryfarm-notify-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -101,8 +104,8 @@ pipeline {
                     when{
                         branch 'maryfarm-plant-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -115,8 +118,8 @@ pipeline {
                     when{
                         branch 'maryfarm-user-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -129,8 +132,8 @@ pipeline {
                     when{
                         branch 'maryfarm-consumer-service'
                     }
-                    node('slave2'){
-                        steps {
+                    steps{
+                        node(slave_back){
                             updateGitlabCommitStatus name: 'build', state: 'running'
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -142,120 +145,124 @@ pipeline {
             }
         }
         stage("Spring CD") {
-            stage('only master for infra'){
-                when{
-                    branch 'master';
-                }
-                steps{
-                    updateGitlabCommitStatus name: 'build', state: 'running'
-                    echo "${env.BRANCH_NAME} ->  spring CD running"
-                    build(
-                        job: "POD-CD-Pipeline-AWS", 
-                        parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                    )
-                }
-            }
-            stage('maryfarm-board-service'){
-                when{
-                    branch 'maryfarm-board-service'
-                }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+            parallel{
+                stage('only master for infra'){
+                    when{
+                        branch 'master';
+                    }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            echo "${env.BRANCH_NAME} ->  spring CD running"
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
                     }
                 }
-
-            }
-            stage("maryfarm-calendar-service") {
-                when{
-                    branch 'maryfarm-calendar-service'
-                }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                stage('maryfarm-board-service'){
+                    when{
+                        branch 'maryfarm-board-service'
                     }
-                }
-
-            }
-            stage("maryfarm-chat-service") {
-                when{
-                    branch 'maryfarm-chat-service'
-                }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
                     }
-                }
 
-            }
-            stage("maryfarm-notify-service") {
-                when{
-                    branch 'maryfarm-notify-service'
                 }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                stage("maryfarm-calendar-service") {
+                    when{
+                        branch 'maryfarm-calendar-service'
                     }
-                }
-
-            }
-            stage("maryfarm-plant-service") {
-                when{
-                    branch 'maryfarm-plant-service'
-                }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
                     }
-                }
 
-            }
-            stage("maryfarm-user-service") {
-                when{
-                    branch 'maryfarm-user-service'
                 }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                stage("maryfarm-chat-service") {
+                    when{
+                        branch 'maryfarm-chat-service'
                     }
-                }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
+                    }
 
-            }
-            stage("maryfarm-consumer-service") {
-                when{
-                    branch 'maryfarm-consumer-service'
                 }
-                node('slave2'){
-                    steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        build(
-                            job: "POD-CD-Pipeline-AWS", 
-                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                        )
+                stage("maryfarm-notify-service") {
+                    when{
+                        branch 'maryfarm-notify-service'
+                    }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
+                    }
+
+                }
+                stage("maryfarm-plant-service") {
+                    when{
+                        branch 'maryfarm-plant-service'
+                    }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
+                    }
+
+                }
+                stage("maryfarm-user-service") {
+                    when{
+                        branch 'maryfarm-user-service'
+                    }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
+                    }
+
+                }
+                stage("maryfarm-consumer-service") {
+                    when{
+                        branch 'maryfarm-consumer-service'
+                    }
+                    steps{
+                        node(slave_back){
+                            updateGitlabCommitStatus name: 'build', state: 'running'
+                            build(
+                                job: "POD-CD-Pipeline-AWS", 
+                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                            )
+                        }
                     }
                 }
             }
