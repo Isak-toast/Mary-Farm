@@ -1,0 +1,23 @@
+#server:
+#  port: 8761
+#
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#
+#spring:
+#  application:
+#    name: maryfarm-discovery-service
+##  rabbitmq:
+##    host: 127.0.0.1
+##    port: 5672
+##    username: guest
+##    password: guest
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
+#

@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:mysql://172.26.1.228:3306/farm?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+# p6spy를 통한 SQL 로그 출력
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+# p6spy의 출력 로깅 레벨을 debug로 설정
+logging:
+  level:
+    p6spy: debug
+
+cloud:
+  aws:
+    s3:
+      bucket: maryfarm.bucket
+    credentials:
+      access-key: AKIA6GNIUYRRMAH6K36J
+      secret-key: 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
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match:
+    - /api/**

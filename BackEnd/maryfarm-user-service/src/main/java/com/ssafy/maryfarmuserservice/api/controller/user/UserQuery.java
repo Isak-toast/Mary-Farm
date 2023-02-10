@@ -78,7 +78,6 @@ public class UserQuery {
     @GetMapping("/user/home/{userId}")
     public ResponseEntity<?> searchHome(@PathVariable("userId") String userId) {
         Optional<FirstHomeViewDTO> resultDto = firstHomeViewDTORepository.findByUserId(userId);
-        use
         return ResponseEntity.ok(resultDto.get());
     }
 
