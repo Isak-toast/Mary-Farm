@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "FirstHomeView")
-@Data 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FirstHomeViewDTO {
