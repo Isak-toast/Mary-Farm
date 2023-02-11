@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserCommand {
     private final UserCService userCService;
     private final FileUploadService fileUploadService;
-    @Operation(summary = "회원 가입 요청", description = "회원 정보를 등록합니다.", tags = { "User Controller" })
+    @Operation(summary = "회원 가입 요청", description = "회원 정보를 등록합니다.", tags = { "User Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = UserResponseDTO.class))),
@@ -41,7 +41,7 @@ public class UserCommand {
         return ResponseEntity.ok(saveUser.getId());
     }
 
-    @Operation(summary = "로그인 요청", description = "회원 정보를 통해 로그인합니다.", tags = { "User Controller" })
+    @Operation(summary = "로그인 요청", description = "회원 정보를 통해 로그인합니다.", tags = { "User Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = Integer.class))),
@@ -56,7 +56,7 @@ public class UserCommand {
         else return ResponseEntity.ok(1);
     }
 
-    @Operation(summary = "회원 정보 수정", description = "회원 정보를 수정합니다.", tags = { "User Controller" })
+    @Operation(summary = "회원 정보 수정", description = "회원 정보를 수정합니다.", tags = { "User Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = UserResponseDTO.class))),
@@ -71,7 +71,7 @@ public class UserCommand {
         return ResponseEntity.ok(user.getId());
     }
 
-    @Operation(summary = "실제 텃밭 등록", description = "실제 텃밭 주소를 등록합니다.", tags = { "User Controller" })
+    @Operation(summary = "실제 텃밭 등록", description = "실제 텃밭 주소를 등록합니다.", tags = { "User Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = UserResponseDTO.class))),
@@ -85,7 +85,7 @@ public class UserCommand {
         return ResponseEntity.ok(user.getId());
     }
 
-    @Operation(summary = "추천용 응답 저장", description = "작물 추천을 받기 위한 응답을 저장합니다.", tags = { "User Controller" })
+    @Operation(summary = "추천용 응답 저장", description = "작물 추천을 받기 위한 응답을 저장합니다.", tags = { "User Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST"),

@@ -27,7 +27,7 @@ public class FollowCommand {
     private final FollowCService followCService;
     private final FollowProducer followProducer;
     private final NotifyServiceClient notifyServiceClient;
-    @Operation(summary = "팔로우 요청", description = "다른 유저를 팔로우합니다.", tags = { "Follow Controller" })
+    @Operation(summary = "팔로우 요청", description = "다른 유저를 팔로우합니다.", tags = { "Follow Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = FollowResponseDTO.class))),
@@ -37,7 +37,7 @@ public class FollowCommand {
     })
     @PostMapping("/follow/following")
     public ResponseEntity<?> FollowUser(@RequestBody CreateFollowRequestDTO dto) {
-        Follow follow = followCService.saveFollow(dto.getSenderId(),dto.getReceiverId());
-        return ResponseEntity.ok(follow.getId());
+        followCService.saveFollow(dto.getSenderId(),dto.getReceiverId());
+        return ResponseEntity.ok(1);
     }
 }
