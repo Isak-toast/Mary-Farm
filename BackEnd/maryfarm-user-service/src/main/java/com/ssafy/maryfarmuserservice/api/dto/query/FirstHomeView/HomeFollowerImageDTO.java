@@ -22,6 +22,8 @@ public class HomeFollowerImageDTO {
     private String profilePath;
     private String latestDiaryImagePath;
 
+    private String plantId;
+
     public HomeFollowerImageDTO(Map<Object, Object> payload) {
         this.userId = (String) payload.get("user_id");
         this.userName = (String) payload.get("user_name");
