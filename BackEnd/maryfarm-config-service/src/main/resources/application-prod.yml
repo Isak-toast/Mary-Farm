@@ -5,7 +5,11 @@ spring:
   application:
     name: maryfarm-config-service
   rabbitmq:
+<<<<<<< HEAD
     host: 172.26.1.228
+=======
+    host: 127.0.0.1
+>>>>>>> maryfarm-notify-service
     port: 5672
     username: guest
     password: guest
@@ -17,9 +21,15 @@ spring:
     config:
       server:
         git:
+<<<<<<< HEAD
           uri: https://github.com/Isak-toast/cloud-config-prod
         native:
           search-locations: file://config-repo
+=======
+          uri: https://github.com/jungboke/cloud-config-dev
+        native:
+          search-locations: file:///Users/SSAFY/Desktop/S08P12B308/config-repo
+>>>>>>> maryfarm-notify-service
   config:
     use-legacy-processing: true
 management:

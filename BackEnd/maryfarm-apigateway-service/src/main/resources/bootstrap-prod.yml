@@ -4,4 +4,8 @@ spring:
       extra-refreshable: com.zaxxer.hikari.HikariDataSource
     config:
       uri: http://172.26.1.228:8888
+<<<<<<< HEAD
       name: maryfarm-apigateway-service
+=======
+      name: maryfarm-calendar-service
+>>>>>>> maryfarm-notify-service
