@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource
+    config:
+      uri: http://172.26.2.9:8888
+      name: maryfarm-plant-service
