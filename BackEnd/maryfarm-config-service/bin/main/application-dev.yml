@@ -1,0 +1,29 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: maryfarm-config-service
+  rabbitmq:
+    host: 172.26.1.228
+    port: 5672
+    username: guest
+    password: guest
+#  profiles:
+#    active: native
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource
+    config:
+      server:
+        git:
+          uri: https://github.com/Isak-toast/cloud-config-prod
+        native:
+          search-locations: file:///Users/SSAFY/Desktop/S08P12B308/config-repo
+  config:
+    use-legacy-processing: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
