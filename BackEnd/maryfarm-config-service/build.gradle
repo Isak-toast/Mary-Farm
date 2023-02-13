@@ -43,4 +43,8 @@ tasks.named('test') {
 
 jar {
     enabled = false
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> maryfarm-chat-service
