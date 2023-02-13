@@ -4,36 +4,41 @@ slave_back = 'slave2'
 pipeline {
     agent none
     options {
-      gitLabConnection('gitlab-connection')
+        timestamps()
+        gitLabConnection('gitlab-connection')
+        gitlabCommitStatus(name: 'Spring')
+        gitlabBuilds(builds: ['Build', 'Deploy'])
+    }
+    triggers {
+        gitlab(
+            triggerOnPush: false,
+            triggerOnMergeRequest: true, 
+            triggerOpenMergeRequestOnPush: "source",
+            skipWorkInProgressMergeRequest: true,
+            ciSkip: true,
+            setBuildDescription: true,
+            addNoteOnMergeRequest: true,
+            addCiMessage: true,
+            addVoteOnMergeRequest: true,
+            acceptMergeRequestOnSuccess: false,
+            branchFilterType: "NameBasedFilter",
+            includeBranchesSpec: "dev, test, back",
+            excludeBranchesSpec: "",
+            pendingBuildName: "Spring",
+            cancelPendingBuildsOnUpdate: true
+        )
     }
 
     stages {
-        stage("Android build & deploy + Spring CI") {
+        stage("Build") {
             parallel{
-                stage('only back for android'){
+                stage('back'){
                     when{
                         branch 'back';
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        node(slave_front){
-                            echo "${env.BRANCH_NAME} ->  Android running"
-                            build(
-                                job: "POD-Android-pipeline", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
-                        }
-                    }
-                }
-                
-                stage('only back for all service'){
-                    when{
-                        branch 'back';
-                    }
-                    steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'back', state: 'running'
                         node(slave_back){
-                            echo "${env.BRANCH_NAME} ->  spring CI running"
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
                                 parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
@@ -46,7 +51,7 @@ pipeline {
                         branch 'maryfarm-board-service'
                     }
                     steps {
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -61,7 +66,7 @@ pipeline {
                         branch 'maryfarm-calendar-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -76,7 +81,7 @@ pipeline {
                         branch 'maryfarm-chat-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -90,7 +95,7 @@ pipeline {
                         branch 'maryfarm-notify-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -104,7 +109,7 @@ pipeline {
                         branch 'maryfarm-plant-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -118,7 +123,7 @@ pipeline {
                         branch 'maryfarm-user-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -132,7 +137,7 @@ pipeline {
                         branch 'maryfarm-consumer-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -143,16 +148,15 @@ pipeline {
                 }
             }
         }
-        stage("Spring CD") {
+        stage("Deploy") {
             parallel{
-                stage('only back for infra'){
+                stage('back'){
                     when{
                         branch 'back';
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'back', state: 'running'
                         node(slave_back){
-                            echo "${env.BRANCH_NAME} ->  spring CD running"
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
                                 parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
@@ -165,7 +169,7 @@ pipeline {
                         branch 'maryfarm-board-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -180,7 +184,7 @@ pipeline {
                         branch 'maryfarm-calendar-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -195,7 +199,7 @@ pipeline {
                         branch 'maryfarm-chat-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -210,7 +214,7 @@ pipeline {
                         branch 'maryfarm-notify-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -225,7 +229,7 @@ pipeline {
                         branch 'maryfarm-plant-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -240,7 +244,7 @@ pipeline {
                         branch 'maryfarm-user-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -255,7 +259,7 @@ pipeline {
                         branch 'maryfarm-consumer-service'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
+                        updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -268,14 +272,14 @@ pipeline {
         }
     }
     post {
-      failure {
-        updateGitlabCommitStatus name: 'build', state: 'failed'
-      }
-      success {
-        updateGitlabCommitStatus name: 'build', state: 'success'
-      }
-      aborted {
-        updateGitlabCommitStatus name: 'build', state: 'canceled'
-      }
+        failure {
+            updateGitlabCommitStatus name: 'Spring', state: 'failed'
+        }
+        success {
+            updateGitlabCommitStatus name: 'Spring', state: 'success'
+        }
+        aborted {
+            updateGitlabCommitStatus name: 'Spring', state: 'canceled'
+        }
     }
 }
