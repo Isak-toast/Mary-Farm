@@ -28,7 +28,7 @@ pipeline {
             cancelPendingBuildsOnUpdate: true
         )
     }
-
+ 
     stages {
         stage("Build") {
             parallel{
