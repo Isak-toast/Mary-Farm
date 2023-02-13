@@ -74,6 +74,17 @@ API 명세서
  - [Android Convention](https://www.notion.so/Android-Convention-4e3dbf8af2d34d8e85971d4c3be6dd36)
  - [명세 네이밍 규칙](https://www.notion.so/6b3aee9748bd410c90f5ec7156af4e0e)
 
+### 📜 API 명세
+API 명세서
+- [ 마리팜 API 명세서 ](https://www.notion.so/API-609e8ceec3044dcfb5c6f835f22b741d)
+🛰️ Swagger
+- [ 마리팜 test용 Swagger ](http://54.180.86.161:8080/swagger-ui/index.html)
+
+### 🔖 컨밴션
+ - [Java Convention](https://www.notion.so/Java-Convention-c06f899ca87b46fd974a32a74a6e0cdd)
+ - [Android Convention](https://www.notion.so/Android-Convention-4e3dbf8af2d34d8e85971d4c3be6dd36)
+ - [명세 네이밍 규칙](https://www.notion.so/6b3aee9748bd410c90f5ec7156af4e0e)
+
 ### 📚 ERD
 tech stack
 - [ 마리팜 ERD ](https://www.erdcloud.com/d/y5vxexZN8TByiWuGM)
@@ -233,7 +244,7 @@ tech stack
  | [21일차](https://www.notion.so/Day21-4c812edd354141569a6d531358d61679)
  | [22일차](https://www.notion.so/Day22-6a7224affd544734b8e290f48324fbbd)
 
-### 5주차 진행 내역 (2023.02.13-2023.02.17)
+### 6주차 진행 내역 (2023.02.13-2023.02.17)
 - 데일리 스크럼
 [23일차](https://www.notion.so/Day23-42ee064468a246eeb11ce3f94ed5ca6c)
  | [24일차](https://www.notion.so/Day24-630624cd9ddf41e1ae2b85101137697a)

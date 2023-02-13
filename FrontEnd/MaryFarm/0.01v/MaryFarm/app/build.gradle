@@ -24,8 +24,8 @@ android {
         applicationId "com.numberONE.maryfarm"
         minSdk 26
         targetSdk 32
-        versionCode 9
-        versionName "0.3-alpha03_kakologin"
+        versionCode 10
+        versionName "0.5-alpha00"
 
 //       mainfest kakao key 연결 설정
         manifestPlaceholders = [KakaoKey:KakaoKey]
