@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> maryfarm-calendar-service
 slave_front = 'slave1'
 slave_back = 'slave2'
 
@@ -12,7 +16,11 @@ pipeline {
             parallel{
                 stage('only master for android'){
                     when{
+<<<<<<< HEAD
                         branch 'master';
+=======
+                        branch 'isak';
+>>>>>>> maryfarm-calendar-service
                     }
                     steps{
                         node(slave_front){
@@ -28,7 +36,11 @@ pipeline {
                 
                 stage('only master for all service'){
                     when{
+<<<<<<< HEAD
                         branch 'master';
+=======
+                        branch 'isak';
+>>>>>>> maryfarm-calendar-service
                     }
                     steps{
                         node(slave_back){

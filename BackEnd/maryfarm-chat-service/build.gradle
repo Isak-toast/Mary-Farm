@@ -63,18 +63,11 @@ dependencyManagement {
     }
 }
 
-jar {
-    enabled = false
-}
-
 tasks.named('test') {
     useJUnitPlatform()
 }
 
+
 jar {
     enabled = false
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> maryfarm-chat-service
