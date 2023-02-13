@@ -19,7 +19,7 @@ spring:
         git:
           uri: https://github.com/Isak-toast/cloud-config-prod
         native:
-          search-locations: file:///Users/SSAFY/Desktop/S08P12B308/config-repo
+          search-locations: file://config-repo
   config:
     use-legacy-processing: true
 management:
