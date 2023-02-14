@@ -3,5 +3,5 @@ spring:
     refresh:
       extra-refreshable: com.zaxxer.hikari.HikariDataSource
     config:
-      uri: http://127.0.0.1:8888
+      uri: https://172.26.1.228:8888
       name: maryfarm-calendar-service
