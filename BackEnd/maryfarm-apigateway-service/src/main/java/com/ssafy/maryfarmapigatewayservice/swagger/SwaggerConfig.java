@@ -42,16 +42,16 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
         routeLocator.getRouteDefinitions().subscribe(
                 routeDefinition -> {
                     String resourceName = routeDefinition.getId();
-//                    String location =
-//                            routeDefinition
-//                                    .getPredicates()
-//                                    .get(0)
-//                                    .getArgs()
-//                                    .get("_genkey_0")
-//                                    .replace("/**", API_URI);
-                    String location = "https://" +
-                            routeDefinition.getPredicates().get(0).getArgs().get("_genkey_0")
+                    String location =
+                            routeDefinition
+                                    .getPredicates()
+                                    .get(0)
+                                    .getArgs()
+                                    .get("_genkey_0")
                                     .replace("/**", API_URI);
+//                    String location = "https://" +
+//                            routeDefinition.getPredicates().get(0).getArgs().get("_genkey_0")
+//                                    .replace("/**", API_URI);
                     resources.add(
                             swaggerResource(resourceName, location)
                     );
