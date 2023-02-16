@@ -28,16 +28,16 @@ pipeline {
             cancelPendingBuildsOnUpdate: true
         )
     }
- 
+
     stages {
         stage("Build") {
-                        updateGitlabCommitStatus name: 'master', state: 'running'
             parallel{
                 stage('master'){
                     when{
                         branch 'master';
                     }
                     steps{
+                        updateGitlabCommitStatus name: 'master', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 

@@ -15,6 +15,7 @@ import java.util.TimeZone;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetailDiaryDTO {
+    private String diaryId;
     private String imagePath;
     private Integer likes;
     private String content;
@@ -22,10 +23,18 @@ public class DetailDiaryDTO {
     private List<DetailDiaryCommentDTO> comments = new ArrayList<>();
 
     public DetailDiaryDTO(Map<Object, Object> payload) {
+        this.diaryId = (String) payload.get("diary_id");
         this.imagePath = (String) payload.get("image_path");
         this.likes = 0;
         this.content = (String) payload.get("content");
         LocalDateTime diaryCreatedDate = LocalDateTime.ofInstant(Instant.ofEpochMilli((Long) payload.get("created_date")), TimeZone.getDefault().toZoneId());
         this.diaryCreatedDate = diaryCreatedDate;
+    }
+
+    public void update(Map<Object, Object> payload) {
+        this.imagePath = (String) payload.get("image_path");
+        this.likes = (Integer) payload.get("likes");
+        this.content = (String) payload.get("content");
+        this.imagePath = (String) payload.get("image_path");
     }
 }

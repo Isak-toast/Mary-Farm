@@ -24,9 +24,9 @@ public class RoomListViewListener {
 
     @KafkaListener(
             topics = "userdb-user",
-            groupId = "DetailDiariesPerPlant"
+            groupId = "RoomListDTOInit"
     )
-    public void DetailDiariesPerPlantListen(String message) throws JsonProcessingException {
+    public void RoomListDTOInitListen(String message) throws JsonProcessingException {
         log.info("Kafka Message: ->" + message);
 
         Map<Object, Object> map = new HashMap<>();
@@ -102,6 +102,7 @@ public class RoomListViewListener {
                 r.setLatestMessage((String) payload.get("content"));
                 LocalDateTime timestamp = LocalDateTime.ofInstant(Instant.ofEpochMilli((Long) payload.get("timestamp")), TimeZone.getDefault().toZoneId());
                 r.setLatestTimestamp(timestamp);
+                r.setActive(1);
             }
         }
         roomListDTORepository.save(oppoRoomDto.get());

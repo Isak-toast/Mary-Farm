@@ -51,7 +51,11 @@ public class AllNotifyViewListener {
         ObjectMapper mapper = new ObjectMapper();
         map = mapper.readValue(message, new TypeReference<Map<Object, Object>>() {});
         Map<Object, Object> payload = (Map<Object, Object>) map.get("payload");
-        NotifyDTO notifyDTO = new NotifyDTO(payload);
+        String type = (String) payload.get("type");
+        NotifyDTO notifyDTO = null;
+        if(type.equals("FollowRequest")) notifyDTO = NotifyDTO.makeFollowerNotifyDTO(payload);
+        else if(type.equals("FollowerUpload")) notifyDTO = NotifyDTO.makeFollowerDiaryNotifyDTO(payload);
+        else if(type.equals("DiaryLike")) notifyDTO = NotifyDTO.makeDiaryLikeyNotifyDTO(payload);
         Optional<AllNotifyDTO> dto = allNotifyDTORepository.findByUserId((String) payload.get("user_id"));
         dto.get().getNotifies().add(notifyDTO);
         allNotifyDTORepository.save(dto.get());
