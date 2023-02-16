@@ -1,12 +1,4 @@
-<<<<<<<< HEAD:BackEnd/maryfarm-calendar-service/src/main/java/com/ssafy/maryfarmcalendarservice/config/MongoDBConfig.java
-<<<<<<<< HEAD:BackEnd/maryfarm-chat-service/src/main/java/com/ssafy/maryfarmchatservice/config/MongoDBConfig.java
-package com.ssafy.maryfarmchatservice.config;
-========
 package com.ssafy.maryfarmcalendarservice.config;
->>>>>>>> maryfarm-calendar-service:BackEnd/maryfarm-calendar-service/src/main/java/com/ssafy/maryfarmcalendarservice/config/MongoDBConfig.java
-========
-package com.ssafy.maryfarmuserservice.config;
->>>>>>>> maryfarm-user-service:BackEnd/maryfarm-user-service/src/main/java/com/ssafy/maryfarmuserservice/config/MongoDBConfig.java
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

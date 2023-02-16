@@ -3,15 +3,5 @@ spring:
     refresh:
       extra-refreshable: com.zaxxer.hikari.HikariDataSource
     config:
-<<<<<<< HEAD
-<<<<<<< HEAD
       uri: https://172.26.1.228:8888
       name: maryfarm-user-service
-=======
-      uri: http://172.26.2.9:8888
-      name: maryfarm-user-service
->>>>>>> maryfarm-board-service
-=======
-      uri: http://172.26.2.9:8888
-      name: maryfarm-user-service
->>>>>>> maryfarm-notify-service
