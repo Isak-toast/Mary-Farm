@@ -37,10 +37,6 @@ pipeline {
                         branch 'master';
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'master', state: 'running'
-                        node(slave_back){
-                    }
-                    steps{
                         updateGitlabCommitStatus name: 'build', state: 'running'
                         node(slave_front){
                             echo "${env.BRANCH_NAME} ->  Android running"
@@ -55,11 +51,6 @@ pipeline {
                 stage('only master for all service'){
                     when{
                         branch 'master';
-                    }
-                    steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        node(slave_back){
-                            echo "${env.BRANCH_NAME} ->  spring CI running"
                     }
                     steps{
                         updateGitlabCommitStatus name: 'master', state: 'running'
