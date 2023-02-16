@@ -16,8 +16,10 @@ public class NotifyCService {
     private final NotifyCRepository notifyCRepository;
 
     @Transactional
-    public Notify saveNotify(String type, String content, String userId) {
-        Notify notify = Notify.of(AlarmType.valueOf(type), content, true, userId);
+    public Notify saveNotify(String type, String content, String userId,
+                             String followerId, String plantId, String diaryId) {
+        Notify notify = Notify.of(AlarmType.valueOf(type), content, true, userId,
+                followerId,plantId,diaryId);
         Notify saveNotify = notifyCRepository.save(notify);
         return saveNotify;
     }

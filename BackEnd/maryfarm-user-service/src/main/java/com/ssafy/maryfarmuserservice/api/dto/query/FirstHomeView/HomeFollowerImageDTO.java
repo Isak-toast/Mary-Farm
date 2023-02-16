@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Map;
@@ -15,10 +16,13 @@ import java.util.Map;
 public class HomeFollowerImageDTO {
     @Id
     private String id;
+    @Indexed
     private String userId;
     private String userName;
     private String profilePath;
     private String latestDiaryImagePath;
+
+    private String plantId;
 
     public HomeFollowerImageDTO(Map<Object, Object> payload) {
         this.userId = (String) payload.get("user_id");

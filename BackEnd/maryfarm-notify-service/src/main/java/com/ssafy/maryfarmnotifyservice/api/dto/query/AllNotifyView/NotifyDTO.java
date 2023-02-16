@@ -13,5 +13,8 @@ public class NotifyDTO {
     private String notifyId;
     private String type;
     private String content;
+    private String followerId;
+    private String plantId;
+    private String diaryId;
 
 }

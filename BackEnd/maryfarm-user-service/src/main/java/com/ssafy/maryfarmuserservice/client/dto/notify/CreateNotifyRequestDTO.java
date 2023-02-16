@@ -11,4 +11,7 @@ public class CreateNotifyRequestDTO {
     private String type;
     private String content;
     private String userId;
+    private String followerId;
+    private String plantId;
+    private String diaryId;
 }

@@ -24,7 +24,7 @@ public class CalendarCommand {
     private final CalendarProducer calendarProducer;
     private final PlantServiceClient plantServiceClient;
 
-    @Operation(summary = "일별 달력 정보 등록", description = "특정 일의 작물 관리 상태를 등록합니다.", tags = { "Calendar Controller" })
+    @Operation(summary = "일별 달력 정보 등록", description = "특정 일의 작물 관리 상태를 등록합니다.", tags = { "Calendar Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = Integer.class))),

@@ -11,4 +11,5 @@ public class DiaryLikeRequestDTO {
     //나의 아이디
     private String diaryId;
     private String userId;
+    private String userName;
 }

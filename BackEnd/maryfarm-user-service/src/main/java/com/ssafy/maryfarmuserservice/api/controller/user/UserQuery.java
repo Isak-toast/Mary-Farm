@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+ 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -32,7 +32,7 @@ public class UserQuery {
     private final FirstHomeViewDTORepository firstHomeViewDTORepository;
     private final MyFarmViewDTORepository myFarmViewDTORepository;
 
-    @Operation(summary = "회원 조회", description = "특정 회원을 조회합니다.", tags = { "User Controller" })
+    @Operation(summary = "회원 조회", description = "특정 회원을 조회합니다.", tags = { "User Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = UserResponseDTO.class))),
@@ -49,7 +49,7 @@ public class UserQuery {
     /*
         DiaryService에서 FeignClient로 사용중이므로 없애면 안됨.
      */
-    @Operation(summary = "팔로워 목록 조회", description = "특정 회원의 팔로워 목록을 조회합니다.", tags = { "User Controller" })
+    @Operation(summary = "팔로워 목록 조회", description = "특정 회원의 팔로워 목록을 조회합니다.", tags = { "User Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = UserResponseDTO.class))),
@@ -67,7 +67,7 @@ public class UserQuery {
         return ResponseEntity.ok(resultDtos);
     }
 
-    @Operation(summary = "유저 메인 홈화면 조회", description = "특정 회원의 메인 홈화면을 조회합니다.", tags = { "User Controller" })
+    @Operation(summary = "유저 메인 홈화면 조회", description = "특정 회원의 메인 홈화면을 조회합니다.", tags = { "User Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = FirstHomeViewDTO.class))),
@@ -81,7 +81,7 @@ public class UserQuery {
         return ResponseEntity.ok(resultDto.get());
     }
 
-    @Operation(summary = "유저 내농장 화면 조회", description = "특정 회원의 내농장 화면을 조회합니다.", tags = { "User Controller" })
+    @Operation(summary = "유저 내농장 화면 조회", description = "특정 회원의 내농장 화면을 조회합니다.", tags = { "User Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = MyFarmViewDTO.class))),

@@ -20,6 +20,24 @@ import java.util.Optional;
 public class MessageRoomViewListener {
 
     private final MessageRoomDTORepository messageRoomDTORepository;
+    @KafkaListener(
+            topics = "chatdb-room",
+            groupId = "MessagesPerRoomInit"
+    )
+    public void MessagesPerRoomInitListen(String message) throws JsonProcessingException {
+        log.info("Kafka Message: ->" + message);
+
+        Map<Object, Object> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+        map = mapper.readValue(message, new TypeReference<Map<Object, Object>>() {});
+        Map<Object, Object> payload = (Map<Object, Object>) map.get("payload");
+        Optional<MessageRoomDTO> dto = messageRoomDTORepository.findByRoomId((String) payload.get("room_id"));
+        if(!dto.isPresent()) {
+            MessageRoomDTO messageRoomDTO = new MessageRoomDTO();
+            messageRoomDTO.setRoomId((String) payload.get("room_id"));
+            messageRoomDTORepository.save(messageRoomDTO);
+        }
+    }
 
     @KafkaListener(
             topics = "chatdb-message",
@@ -34,14 +52,7 @@ public class MessageRoomViewListener {
         Map<Object, Object> payload = (Map<Object, Object>) map.get("payload");
         MessageDTO messageDTO = new MessageDTO(payload);
         Optional<MessageRoomDTO> dto = messageRoomDTORepository.findByRoomId((String) payload.get("room_id"));
-        if(dto.isPresent()) {
-            dto.get().getMessages().add(messageDTO);
-            messageRoomDTORepository.save(dto.get());
-        } else {
-            MessageRoomDTO messageRoomDTO = new MessageRoomDTO();
-            messageRoomDTO.setRoomId((String) payload.get("room_id"));
-            messageRoomDTO.getMessages().add(messageDTO);
-            messageRoomDTORepository.save(messageRoomDTO);
-        }
+        dto.get().getMessages().add(messageDTO);
+        messageRoomDTORepository.save(dto.get());
     }
 }

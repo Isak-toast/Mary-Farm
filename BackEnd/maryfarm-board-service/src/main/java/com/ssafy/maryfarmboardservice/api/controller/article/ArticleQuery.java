@@ -30,7 +30,7 @@ public class ArticleQuery {
     private final ArticleCService articleCService;
     private final DetailArticleDTORepository detailArticleDTORepository;
     private final SearchArticleByTypeDTORepository searchArticleByTypeDTORepository;
-    @Operation(summary = "특정 타입의 전체 게시글 화면 조회", description = "특정 타입의 전체 게시글 화면을 조회합니다.", tags = { "Board Controller" })
+    @Operation(summary = "특정 타입의 전체 게시글 화면 조회", description = "특정 타입의 전체 게시글 화면을 조회합니다.", tags = { "Article Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = ArticleDTO.class))),
@@ -45,7 +45,7 @@ public class ArticleQuery {
         return ResponseEntity.ok(resultDtos);
     }
 
-    @Operation(summary = "게시글 상세 화면 조회", description = "게시글의 상세 화면을 조회합니다.", tags = { "Board Controller" })
+    @Operation(summary = "게시글 상세 화면 조회", description = "게시글의 상세 화면을 조회합니다.", tags = { "Article Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = DetailArticleDTO.class))),

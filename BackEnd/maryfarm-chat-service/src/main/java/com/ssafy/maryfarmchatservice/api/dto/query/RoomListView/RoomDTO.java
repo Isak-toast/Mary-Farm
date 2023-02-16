@@ -17,5 +17,6 @@ public class RoomDTO {
     private String opponentProfilePath;
     private String latestMessage;
     private LocalDateTime latestTimestamp;
+    private Integer active;
 
 }

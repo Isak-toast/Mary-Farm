@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource
+    config:
+      uri: https://172.26.1.228:8888
+      name: maryfarm-calendar-service

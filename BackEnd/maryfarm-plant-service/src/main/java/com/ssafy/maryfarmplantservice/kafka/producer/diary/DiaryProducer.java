@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class DiaryProducer {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String topic, Diary diary, Status status) {
+    public void send(String topic, Diary diary) {
 //        KafkaDiaryDTO kafkaDiaryDTO = new KafkaDiaryDTO(status, diary);
         ObjectMapper mapper = new ObjectMapper();
         String jsonInString = "";

@@ -25,8 +25,8 @@ public class InitDb {
     static class InitService {
         private final ArticleCRepository articleCRepository;
         public void dbInit() {
-            Article article1 = Article.of("123456", "baek", BoardType.Free, "제목입니다", "내용입니다.");
-            Article article2 = Article.of("1234567", "seung", BoardType.Free, "제목입니다", "내용입니다.");
+            Article article1 = Article.of("123456", "baek", BoardType.충청, "제목입니다", "내용입니다.",null);
+            Article article2 = Article.of("1234567", "seung", BoardType.충청, "제목입니다", "내용입니다.",null);
             articleCRepository.save(article1);
             articleCRepository.save(article2);
         }

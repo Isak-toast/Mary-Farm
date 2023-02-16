@@ -15,6 +15,7 @@ import java.util.TimeZone;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetailDiaryDTO {
+    private String diaryId;
     private String imagePath;
     private Integer likes;
     private String content;

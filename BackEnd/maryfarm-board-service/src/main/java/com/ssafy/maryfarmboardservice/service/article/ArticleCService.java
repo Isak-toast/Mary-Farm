@@ -27,8 +27,8 @@ public class ArticleCService {
     private final ArticleCommentCRepository articleCommentCRepository;
 
     @Transactional
-    public Article saveArticle(String userId, String userName, String type, String title, String content) {
-        Article article = Article.of(userId, userName, BoardType.valueOf(type), title, content);
+    public Article saveArticle(String userId, String userName, String type, String title, String content, String profilePath) {
+        Article article = Article.of(userId, userName, BoardType.valueOf(type), title, content, profilePath);
         Article saveArticle = articleCRepository.save(article);
         return saveArticle;
     }
@@ -62,6 +62,7 @@ public class ArticleCService {
     @Transactional
     @Scheduled(cron = "0 0/1 * * * ?")
     public void deleteViewCntCacheFromRedis() {
+        log.info("-----------update viewCntFromCache run--------");
         Set<String> redisKeys = redisTemplate.keys("articleViewCnt*");
         Iterator<String> it = redisKeys.iterator();
         while (it.hasNext()) {
@@ -69,7 +70,7 @@ public class ArticleCService {
             String articleId = data.split("::")[1];
             Integer viewCnt = Integer.parseInt((String) redisTemplate.opsForValue().get(data));
             Article article = articleCRepository.findById(articleId).get();
-            article.addViews(viewCnt);
+            article.setViews(viewCnt);
             log.info("Article add View complete!");
             redisTemplate.delete(data);
         }

@@ -25,10 +25,10 @@ public class InitDb {
     static class InitService {
         private final NotifyCRepository notifyCRepository;
         public void dbInit() {
-            Notify notify1 = Notify.of(AlarmType.FollowRequest, "백님이 팔로우했습니다.", true, "123456");
-            Notify notify2 = Notify.of(AlarmType.FollowerUpload, "김님이 글을 올렸습니다.", true, "1234567");
-            Notify saveNotify1 = notifyCRepository.save(notify1);
-            Notify saveNotify2 = notifyCRepository.save(notify2);
+//            Notify notify1 = Notify.of(AlarmType.FollowRequest, "백님이 팔로우했습니다.", true, "123456");
+//            Notify notify2 = Notify.of(AlarmType.FollowerUpload, "김님이 글을 올렸습니다.", true, "1234567");
+//            Notify saveNotify1 = notifyCRepository.save(notify1);
+//            Notify saveNotify2 = notifyCRepository.save(notify2);
         }
     }
 }

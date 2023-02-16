@@ -26,7 +26,7 @@ import java.util.List;
 public class CalendarQuery {
     private final PlantServiceClient plantServiceClient;
     private final CalendarPerDayDTORepository calendarPerDayDTORepository;
-    @Operation(summary = "특정 년월일의 달력 정보 조회", description = "특정 년월일에 해당하는 자신의 달력 정보를 조회합니다.", tags = { "Calendar Controller" })
+    @Operation(summary = "특정 년월일의 달력 정보 조회", description = "특정 년월일에 해당하는 자신의 달력 정보를 조회합니다.", tags = { "Calendar Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = CalendarPerDayDTO.class))),

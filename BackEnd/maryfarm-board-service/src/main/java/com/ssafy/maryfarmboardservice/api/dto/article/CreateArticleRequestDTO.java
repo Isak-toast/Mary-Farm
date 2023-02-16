@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class CreateArticleRequestDTO {
     private String userId;
     private String userName;
+    private String profilePath;
     private String type;
     private String title;
     private String content;

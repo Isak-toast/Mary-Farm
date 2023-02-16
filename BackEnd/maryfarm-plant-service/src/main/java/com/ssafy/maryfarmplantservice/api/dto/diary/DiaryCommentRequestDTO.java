@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class DiaryCommentRequestDTO {
     private String diaryId;
     private String userId;
+    private String userName;
     private String content;
 }

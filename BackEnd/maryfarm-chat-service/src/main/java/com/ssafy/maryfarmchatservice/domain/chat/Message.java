@@ -27,7 +27,6 @@ public class Message extends BaseTimeEntity implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "room_id")
     private Room room;
-    @Column(name = "user_id")
     private String userId;
     private String userName;
     private String profilePath;

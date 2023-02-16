@@ -28,4 +28,12 @@ public interface PlantRepository extends JpaRepository<Plant, String> {
 //            " RIGHT JOIN Tag t ON t.plant.id = p.id" +
 //            " WHERE t.name = :name")
 //    List<Plant> findPlantByTag(@Param("name") String text);
-}
+
+    @Query(value = "select *" +
+            " from plant" +
+            " where plant.user_id = :userId" +
+            " and ((plant.active = true) or ((year(plant.harvest_time) = :year) and (month(plant.harvest_time) = :month) and (day(plant.harvest_time) = :day)))",nativeQuery = true)
+    List<Plant> findByDay(@Param("userId") String userId, @Param("year") Integer year,
+                          @Param("month") Integer month, @Param("day") Integer day);
+    }
+

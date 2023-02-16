@@ -37,7 +37,7 @@ public class DiaryCommand {
     private final DiaryProducer diaryProducer;
     private final PlantProducer plantProducer;
 
-    @Operation(summary = "일지 시작", description = "작물을 등록함과 동시에 일지를 시작합니다.", tags = { "Diary Controller" })
+    @Operation(summary = "일지 시작", description = "작물을 등록함과 동시에 일지를 시작합니다.", tags = { "Diary Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -58,7 +58,7 @@ public class DiaryCommand {
         return ResponseEntity.ok(saveDiary.getId());
     }
 
-    @Operation(summary = "일지 추가", description = "일지를 추가로 등록합니다.", tags = { "Diary Controller" })
+    @Operation(summary = "일지 추가", description = "일지를 추가로 등록합니다.", tags = { "Diary Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -74,7 +74,7 @@ public class DiaryCommand {
         return ResponseEntity.ok(saveDiary.getId());
     }
 
-    @Operation(summary = "일지 수정", description = "일지를 수정합니다.", tags = { "Diary Controller" })
+    @Operation(summary = "일지 수정", description = "일지를 수정합니다.", tags = { "Diary Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -95,7 +95,7 @@ public class DiaryCommand {
         return ResponseEntity.ok(updateDiary.getId());
     }
 
-    @Operation(summary = "일지 좋아요 등록", description = "일지에 좋아요를 등록합니다.", tags = { "Diary Controller" })
+    @Operation(summary = "일지 좋아요 등록", description = "일지에 좋아요를 등록합니다.", tags = { "Diary Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -105,12 +105,12 @@ public class DiaryCommand {
     })
     @PostMapping("/diary/like")
     public ResponseEntity<?> giveDiaryLike(@RequestBody DiaryLikeRequestDTO dto) {
-        DiaryLike diaryLike = diaryCService.saveDiaryLike(dto.getDiaryId(),dto.getUserId());
+        DiaryLike diaryLike = diaryCService.saveDiaryLike(dto.getDiaryId(),dto.getUserId(),dto.getUserName());
         diaryCService.addLike(dto.getDiaryId());
         return ResponseEntity.ok(diaryLike.getId());
     }
 
-    @Operation(summary = "일지 댓글 등록", description = "일지에 댓글을 등록합니다.", tags = { "Diary Controller" })
+    @Operation(summary = "일지 댓글 등록", description = "일지에 댓글을 등록합니다.", tags = { "Diary Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -120,7 +120,7 @@ public class DiaryCommand {
     })
     @PostMapping("/diary/comment")
     public ResponseEntity<?> giveDiaryComment(@RequestBody DiaryCommentRequestDTO dto) {
-        DiaryComment diaryComment = diaryCService.saveDiaryComment(dto.getDiaryId(),dto.getUserId(),dto.getContent());
+        DiaryComment diaryComment = diaryCService.saveDiaryComment(dto.getDiaryId(),dto.getUserId(),dto.getContent(),dto.getUserName());
         return ResponseEntity.ok(diaryComment.getId());
     }
 }

@@ -30,7 +30,7 @@ public class RoomCommand {
     private final MessageCService messageCService;
     private final UserServiceClient userServiceClient;
     private final RoomProducer roomProducer;
-    @Operation(summary = "채팅방 등록", description = "채팅방을 등록합니다.", tags = { "Room Controller" })
+    @Operation(summary = "채팅방 등록", description = "채팅방을 등록합니다.", tags = { "Room Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -44,5 +44,4 @@ public class RoomCommand {
                 dto.getReceiverId(),dto.getReceiverName(),dto.getReceiverProfilePath());
         return ResponseEntity.ok(room.getId());
     }
-
 }

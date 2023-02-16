@@ -23,13 +23,20 @@ public class Notify extends BaseTimeEntity implements Serializable {
     private AlarmType type;
     private String content;
     private Boolean active;
+    private String followerId;
+    private String plantId;
+    private String diaryId;
 
-    public static Notify of(AlarmType type, String content, boolean active, String userId) {
+    public static Notify of(AlarmType type, String content, boolean active,
+                            String userId, String followerId, String plantId, String diaryId) {
         Notify notify = new Notify();
         notify.type = type;
         notify.content = content;
         notify.active = active;
         notify.userId = userId;
+        notify.followerId = followerId;
+        notify.plantId = plantId;
+        notify.diaryId = diaryId;
         return notify;
     }
 }

@@ -28,12 +28,17 @@ public class MyFarmViewListener {
         map = mapper.readValue(message, new TypeReference<Map<Object, Object>>() {});
         Map<Object, Object> payload = (Map<Object, Object>) map.get("payload");
         Optional<MyFarmViewDTO> myFarmViewDTO = myFarmViewDTORepository.findByUserId((String) payload.get("user_id"));
+        /*
+            유저가 처음 생성됐을 때, 해당 유저만의 MyFarmView를 생성함.
+            또한 유저 정보가 변경됐을 때, 해당 유저의 MyFarmView에서 유저이름,프로필을 변경함.
+         */
         if(!myFarmViewDTO.isPresent()) {
-            MyFarmViewDTO firstFarmViewDTO = new MyFarmViewDTO();
-            firstFarmViewDTO.setUserId((String) payload.get("user_id"));
-            firstFarmViewDTO.setFollowerCount(0);
-            firstFarmViewDTO.setFollowingCount(0);
+            MyFarmViewDTO firstFarmViewDTO = new MyFarmViewDTO(payload);
             myFarmViewDTORepository.save(firstFarmViewDTO);
+        } else {
+            myFarmViewDTO.get().setUserName((String) payload.get("user_name"));
+            myFarmViewDTO.get().setProfilePath((String) payload.get("profile_path"));
+            myFarmViewDTORepository.save(myFarmViewDTO.get());
         }
     }
 

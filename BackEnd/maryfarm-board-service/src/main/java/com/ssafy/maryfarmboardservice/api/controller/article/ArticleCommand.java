@@ -27,7 +27,7 @@ public class ArticleCommand {
     private final ArticleCService articleCService;
     private final UserServiceClient userServiceClient;
     private final ArticleProducer articleProducer;
-    @Operation(summary = "게시글 작성", description = "게시글을 작성합니다.", tags = { "Board Controller" })
+    @Operation(summary = "게시글 작성", description = "게시글을 작성합니다.", tags = { "Article Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -37,11 +37,12 @@ public class ArticleCommand {
     })
     @PostMapping("/board/create")
     public ResponseEntity<?> createArticle(@RequestBody CreateArticleRequestDTO dto) throws IOException {
-        Article article = articleCService.saveArticle(dto.getUserId(),dto.getUserName(),dto.getType(),dto.getTitle(),dto.getContent());
+        Article article = articleCService.saveArticle(dto.getUserId(),dto.getUserName(),dto.getType(),dto.getTitle(),dto.getContent(),
+                dto.getProfilePath());
         return ResponseEntity.ok(article.getId());
     }
 
-    @Operation(summary = "게시글 댓글 작성", description = "특정 게시글의 댓글을 작성합니다.", tags = { "Board Controller" })
+    @Operation(summary = "게시글 댓글 작성", description = "특정 게시글의 댓글을 작성합니다.", tags = { "Article Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),

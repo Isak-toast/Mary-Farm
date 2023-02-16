@@ -23,7 +23,7 @@ public class NotifyQuery {
     private final NotifyCService notifyCService;
     private final AllNotifyDTORepository allNotifyDTORepository;
 
-    @Operation(summary = "알림 리스트 화면 조회", description = "특정 유저의 알림 리스트 화면을 조회합니다.", tags = { "Notify Controller" })
+    @Operation(summary = "알림 리스트 화면 조회", description = "특정 유저의 알림 리스트 화면을 조회합니다.", tags = { "Notify Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = AllNotifyDTO.class))),

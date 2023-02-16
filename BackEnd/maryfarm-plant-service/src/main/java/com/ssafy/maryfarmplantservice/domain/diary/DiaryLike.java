@@ -23,10 +23,13 @@ public class DiaryLike extends BaseTimeEntity implements Serializable {
     @JoinColumn(name = "diary_id")
     private Diary diary;
 
-    public static DiaryLike of(String userId, Diary diary) {
+    private String userName;
+
+    public static DiaryLike of(String userId, Diary diary, String userName) {
         DiaryLike diaryLike = new DiaryLike();
         diaryLike.userId = userId;
         diaryLike.diary = diary;
+        diaryLike.userName = userName;
         return diaryLike;
     }
 }

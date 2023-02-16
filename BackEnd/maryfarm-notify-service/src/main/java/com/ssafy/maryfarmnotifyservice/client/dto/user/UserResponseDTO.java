@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserResponseDTO {
     private String userId;
-    private String nickname;
+    private String userName;
     private String tier;
-    private String profilepath;
+    private String profilePath;
 }

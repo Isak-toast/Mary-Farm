@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetailDiaryCommentDTO {
+    private String commentId;
     private String profilePath;
     private String userName;
     private String content;

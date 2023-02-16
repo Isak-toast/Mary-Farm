@@ -29,7 +29,7 @@ public class RoomQuery {
     private final MessageCService messageCService;
     private final UserServiceClient userServiceClient;
     private final RoomListDTORepository roomListDTORepository;
-    @Operation(summary = "채팅방 리스트 화면 조회", description = "특정 유저의 채팅방 리스트 화면을 조회합니다.", tags = { "Room Controller" })
+    @Operation(summary = "채팅방 리스트 화면 조회", description = "특정 유저의 채팅방 리스트 화면을 조회합니다.", tags = { "Room Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = RoomListDTO.class))),

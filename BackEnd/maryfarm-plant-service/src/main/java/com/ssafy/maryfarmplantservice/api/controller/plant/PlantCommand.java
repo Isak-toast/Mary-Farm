@@ -21,7 +21,7 @@ import java.io.IOException;
 public class PlantCommand {
     private final PlantCService plantCService;
 
-    @Operation(summary = "작물 재배 처리", description = "작물을 재배 처리합니다.", tags = { "Plant Controller" })
+    @Operation(summary = "작물 재배 처리", description = "작물을 재배 처리합니다.", tags = { "Plant Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),

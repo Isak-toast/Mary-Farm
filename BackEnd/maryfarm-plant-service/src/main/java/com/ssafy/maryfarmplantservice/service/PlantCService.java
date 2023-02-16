@@ -46,4 +46,13 @@ public class PlantCService {
         plant.get().setActive(false);
         return plant.get();
     }
+
+    public List<Plant> searchPlantByToday(String userId) {
+        LocalDateTime now = LocalDateTime.now();
+        Integer year = now.getYear();
+        Integer month = now.getMonth().getValue();
+        Integer day = now.getDayOfMonth();
+        return plantRepository.findByDay(userId,year,month,day);
+    }
+
 }

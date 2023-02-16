@@ -8,6 +8,10 @@ import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
@@ -45,6 +49,9 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
                                     .getArgs()
                                     .get("_genkey_0")
                                     .replace("/**", API_URI);
+//                    String location = "https://" +
+//                            routeDefinition.getPredicates().get(0).getArgs().get("_genkey_0")
+//                                    .replace("/**", API_URI);
                     resources.add(
                             swaggerResource(resourceName, location)
                     );
@@ -52,4 +59,5 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
         );
         return resources;
     }
+    
 }

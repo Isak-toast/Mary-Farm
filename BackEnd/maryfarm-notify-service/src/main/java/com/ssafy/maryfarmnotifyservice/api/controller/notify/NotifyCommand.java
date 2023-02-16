@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotifyCommand {
     private final NotifyCService notifyCService;
 
-    @Operation(summary = "알림 저장", description = "특정 알림을 저장합니다.", tags = { "Notify Controller" })
+    @Operation(summary = "알림 저장", description = "특정 알림을 저장합니다.", tags = { "Notify Command" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -35,7 +35,8 @@ public class NotifyCommand {
     })
     @PostMapping("/notify/save")
     public ResponseEntity<?> saveNotify(@RequestBody CreateNotifyRequestDTO dto) {
-        Notify saveNotify = notifyCService.saveNotify(dto.getType(), dto.getContent(), dto.getUserId());
+        Notify saveNotify = notifyCService.saveNotify(dto.getType(), dto.getContent(), dto.getUserId(),
+        dto.getFollowerId(), dto.getPlantId(), dto.getDiaryId());
         return ResponseEntity.ok(saveNotify.getId());
     }
 }

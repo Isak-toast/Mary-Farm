@@ -21,6 +21,7 @@ public class Article extends BaseTimeEntity implements Serializable {
     private String userId;
     @Column(name = "user_name")
     private String userName;
+    private String profilePath;
     @Enumerated(EnumType.STRING)
     private BoardType type;
     private String title;
@@ -29,10 +30,17 @@ public class Article extends BaseTimeEntity implements Serializable {
     private Integer likes;
     @Column(name = "comment_count")
     private Integer commentCount;
-     public static Article of(String userId, String userName, BoardType type, String title, String content) {
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    public static Article of(String userId, String userName, BoardType type, String title, String content,
+                             String profilePath) {
         Article article = new Article();
         article.userId = userId;
         article.userName = userName;
+        article.profilePath = profilePath;
         article.type = type;
         article.title = title;
         article.content = content;

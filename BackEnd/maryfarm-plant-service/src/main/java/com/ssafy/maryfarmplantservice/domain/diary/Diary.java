@@ -1,8 +1,12 @@
 package com.ssafy.maryfarmplantservice.domain.diary;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ssafy.maryfarmplantservice.domain.BaseTimeEntity;
 import com.ssafy.maryfarmplantservice.domain.plant.Plant;
 import com.ssafy.maryfarmplantservice.domain.tag.Tag;
+import com.ssafy.maryfarmplantservice.formatter.LocalDateTimeDeserializer;
+import com.ssafy.maryfarmplantservice.formatter.LocalDateTimeSerializer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +39,11 @@ public class Diary extends BaseTimeEntity implements Serializable {
     @OneToMany(mappedBy = "diary", cascade = CascadeType.ALL)
     private List<Tag> tags = new ArrayList<>();
     private String title;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime plantCreatedDate;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime harvestDate;
 
     public void setImagePath(String imagePath) {

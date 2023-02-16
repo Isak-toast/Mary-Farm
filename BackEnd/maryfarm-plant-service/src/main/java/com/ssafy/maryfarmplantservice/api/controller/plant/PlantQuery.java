@@ -1,10 +1,12 @@
 package com.ssafy.maryfarmplantservice.api.controller.plant;
 
 import com.ssafy.maryfarmplantservice.api.dto.plant.MonthPlantSearchRequestDTO;
+import com.ssafy.maryfarmplantservice.api.dto.query.response.DiaryToHomeResponseDTO;
 import com.ssafy.maryfarmplantservice.api.dto.query.response.PlantResponseDTO;
 import com.ssafy.maryfarmplantservice.api.dto.query.response.PlantSearchByMonthResponseDTO;
 import com.ssafy.maryfarmplantservice.client.dto.user.UserResponseDTO;
 import com.ssafy.maryfarmplantservice.client.service.user.UserServiceClient;
+import com.ssafy.maryfarmplantservice.domain.diary.Diary;
 import com.ssafy.maryfarmplantservice.domain.plant.Plant;
 import com.ssafy.maryfarmplantservice.service.PlantCService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,7 +31,8 @@ import java.util.List;
 public class PlantQuery {
     private final PlantCService plantCService;
     private final UserServiceClient userServiceClient;
-    @Operation(summary = "특정 작물 조회", description = "특정 작물의 정보를 조회합니다.", tags = { "Plant Controller" })
+
+    @Operation(summary = "특정 작물 조회", description = "특정 작물의 정보를 조회합니다.", tags = { "Plant Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(schema = @Schema(implementation = String.class))),
@@ -50,10 +53,10 @@ public class PlantQuery {
         return ResponseEntity.ok(dto);
     }
 
-    @Operation(summary = "특정 년월의 작물들 조회", description = "특정 년월에 해당하는 자신의 작물들을 조회합니다.", tags = { "Plant Controller" })
+    @Operation(summary = "특정 년월의 작물들 조회", description = "특정 년월에 해당하는 자신의 작물들을 조회합니다.", tags = { "Plant Query" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(schema = @Schema(implementation = MonthPlantSearchRequestDTO.class))),
+                    content = @Content(schema = @Schema(implementation = PlantSearchByMonthResponseDTO.class))),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
             @ApiResponse(responseCode = "404", description = "NOT FOUND"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
@@ -61,6 +64,25 @@ public class PlantQuery {
     @PostMapping("/plant/month/search")
     public ResponseEntity<?> searchPlant(@RequestBody MonthPlantSearchRequestDTO dto) throws IOException {
         List<Plant> list = plantCService.searchPlantByMonth(dto.getUserId(),dto.getYear(),dto.getMonth());
+        List<PlantSearchByMonthResponseDTO> resultDtos = new ArrayList<>();
+        for(Plant p : list) {
+            resultDtos.add(PlantSearchByMonthResponseDTO.of(p));
+        }
+        return ResponseEntity.ok(resultDtos);
+    }
+
+    @Operation(summary = "오늘에 해당하는 작물들 조회", description = "오늘에 해당하는 자신의 작물들을 조회합니다.", tags = { "Plant Query" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "OK",
+                    content = @Content(schema = @Schema(implementation = PlantSearchByMonthResponseDTO.class))),
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+    })
+    @GetMapping("/plant/month/today/{userId}")
+    public ResponseEntity<?> searchPlantByToday(@PathVariable("userId") String userId) throws IOException {
+//        List<Plant> list = plantCService.searchPlantByMonth(dto.getUserId(),dto.getYear(),dto.getMonth());
+        List<Plant> list = plantCService.searchPlantByToday(userId);
         List<PlantSearchByMonthResponseDTO> resultDtos = new ArrayList<>();
         for(Plant p : list) {
             resultDtos.add(PlantSearchByMonthResponseDTO.of(p));
