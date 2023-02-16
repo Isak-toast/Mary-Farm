@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 인터넷 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 사용 권한 설정 -->
     <uses-feature
@@ -24,11 +23,12 @@
         android:theme="@style/Theme.MaryFarm"
         android:usesCleartextTraffic="true"
         tools:targetApi="32">
+
         <service
             android:name=".MyRemoteViewsService"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BIND_REMOTEVIEWS"></service>
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver
             android:name=".WidgetMary"
@@ -41,6 +41,26 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_mary_info" />
         </receiver>
+
+        <activity
+            android:name=".ui.AlgorithmPage.sample.RecommendSample1"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".ui.AlgorithmPage.sample.RecommendSample2"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".ui.AlgorithmPage.sample.RecommendSample3"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".ui.AlgorithmPage.RecommendActivity"
@@ -89,13 +109,12 @@
         <activity
             android:name=".KakaoLogin.KakaoLoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -104,12 +123,8 @@
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <!-- <c-filter> -->
+            <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
@@ -122,18 +137,17 @@
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.VIEW" /> -->
-            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-
-            <!-- &lt;!&ndash; local.properties 설정 mani_kakao_key와 연결 &ndash;&gt; -->
-            <!-- <data -->
-            <!-- android:host="oauth" -->
-            <!-- android:scheme="${KakaoKey}" /> -->
-            <!-- </intent-filter> -->
+                <!-- local.properties 설정 mani_kakao_key와 연결 -->
+                <data
+                    android:host="oauth"
+                    android:scheme="${KakaoKey}" />
+            </intent-filter>
         </activity>
 
         <provider

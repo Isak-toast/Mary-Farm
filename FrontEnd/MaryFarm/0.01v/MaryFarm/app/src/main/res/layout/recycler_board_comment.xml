@@ -31,23 +31,16 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/board_recycler_nickname"
                 android:textColor="@color/black"
+                android:hint="000"
                 android:text=""/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/board_recycler_date"
-                android:layout_toRightOf="@+id/board_recycler_nickname"
-                android:textColor="@color/black"
-                android:text="10일전" />
 
             <TextView
                 android:id="@+id/likesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/board_recycler_date"
+                android:layout_toRightOf="@+id/board_recycler_nickname"
+                android:layout_marginTop="3dp"
                 android:text="좋아요 수"
-                android:layout_alignBaseline="@+id/board_recycler_date"
                 android:layout_marginLeft="10dp"
                 android:textSize="10sp"/>
 
@@ -56,7 +49,9 @@
                 android:layout_height="20dp"
                 android:id="@+id/board_recycler_comment_like"
                 android:textColor="@color/black"
+                android:layout_marginTop="3dp"
                 android:layout_toRightOf="@+id/likesText"
+                android:textSize="9sp"
                 android:hint="0"
                 android:layout_marginLeft="10dp"/>
 
@@ -65,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/board_recycler_content"
                 android:layout_below="@+id/board_recycler_nickname"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:hint="내용"/>
         </RelativeLayout>

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.numberONE.maryfarm.MainActivity;
 import com.numberONE.maryfarm.R;
 import com.numberONE.maryfarm.databinding.FragmentAlarmBinding;
 
@@ -25,21 +26,27 @@ public class AlarmFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAlarmBinding.inflate(inflater,container,false);
+        ViewGroup view = binding.getRoot();
 
         recyclerView_alarms = binding.alarmNoti;
         layoutManager_alarms = new LinearLayoutManager(getActivity());
         recyclerView_alarms.setLayoutManager(layoutManager_alarms);
 
-        String[] nickname = {"김관섭", "박수용", "이석우", "조민규"};
-        String[] content = {"님이 새로운 게시물을 올렸습니다.","님이 새로운 게시물을 올렸습니다.","님이 새로운 게시물을 올렸습니다.","님이 새로운 게시물을 올렸습니다."};
-        String[] date = {"1시간전","2일전","3일전","4일전"};
-        int[] profile = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d};
+        String[] nickname = {"호박", "왕감자", "김차분팬1호", "왕감자", "호박"};
+        String[] content = {"분갈이 할 타이밍!", "님이 내 일지를 좋아해요.","님이 내 농장 이웃이 되었어요!","님이 새로운 일지를 시작했어요.","일지를 올린 지 3주가 지났어요!"};
+        String[] date = {"12분 전", "1시간 전","2일 전","3일 전","4일 전"};
+        int[] profile = {R.drawable.hohoho, R.drawable.profilebaek,R.drawable.b,R.drawable.profilebaek,R.drawable.hohoho};
 
         adapter_alarms = new AlarmItemsAdapter(nickname, date, content, profile);
-
         recyclerView_alarms.setAdapter(adapter_alarms);
 
-        ViewGroup view = binding.getRoot();
+        AlarmItemsAdapter.setOnPlantCheckListener(new AlarmItemsAdapter.OnChatClickListener() {
+            @Override
+            public void onChatClick(View v, int position) {
+                ((MainActivity)getActivity()).onChatFragmentChange(2, ""+position+"");
+            }
+        });
+
         return view;
     }
 

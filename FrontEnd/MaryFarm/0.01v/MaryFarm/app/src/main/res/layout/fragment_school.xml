@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+
+            android:src="@drawable/hamburger2" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="마을회관"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="베란다에서 키우기 쉬운 채소 5가지"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:videoId="JdvHbXHUOoM"
+        app:autoPlay="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2월달에 심지 않으면 무조건 후회할 작물 5가지"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:videoId="YDaSqNICNyE"
+        app:autoPlay="false" />
+</LinearLayout>
+<!--<ScrollView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:id="@+id/recipe_view_scrollView"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+<!--    <LinearLayout-->
+<!--        android:gravity="center"-->
+<!--        android:id="@+id/recipe_view_linearLayout"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginBottom="15dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:src="@drawable/hamburger2" />-->
+<!--            <TextView-->
+<!--                android:layout_width="120dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="마을회관"-->
+<!--                android:textSize="20sp"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+<!--        <TextView-->
+<!--            android:id="@+id/youtube_title"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="제목"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_margin="10dp"/>-->
+<!--    </LinearLayout>-->
+<!--</ScrollView>-->

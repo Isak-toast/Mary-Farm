@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.board.BoardMainFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/boardMainFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -12,11 +13,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="43dp"
-            android:layout_height="43dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="10dp"
 
             android:src="@drawable/board_head_img" />
@@ -25,7 +27,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="마을회관"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            />
     </LinearLayout>
 
     <RelativeLayout

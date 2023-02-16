@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/sample_primary</item>
+        <item name="colorPrimaryDark">@color/sample_primary</item>
+        <item name="colorAccent">@color/sample_accent</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+        <item name="fontFamily">@font/shirkhand</item>
+    </style>
+
+    <style name="Widget.MaryFarm.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.MaryFarm.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+</resources>

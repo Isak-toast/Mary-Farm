@@ -45,6 +45,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.numberONE.maryfarm.Retrofit.AddComment;
 import com.numberONE.maryfarm.Retrofit.Comments;
 import com.numberONE.maryfarm.Retrofit.DetailsAPI;
 import com.numberONE.maryfarm.Pick.PickActivity;
@@ -74,7 +75,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.HEAD;
 
 public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
-
+    private String URL = "https://s3.ap-northeast-2.amazonaws.com/maryfarm.bucket/";
     // 좋아요 구현
     private boolean sign=false;
     private TextView likeCount;
@@ -161,9 +162,14 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
 //        BitmapDrawable diaryimg = (BitmapDrawable) binding.diaryDetailImage.getDrawable();
 //        diaryImage = diaryimg.getBitmap();
 
+        String profileImg = plantAllInfo.getProfilePath();
+        profileImgView = findViewById(R.id.profileImg);
+        Glide.with(DiaryDetailActivity.this).load(URL + profileImg).into(profileImgView);
+
         String title = plantAllInfo.getTitle();
         titleView = findViewById(id.title);
         titleView.setText(title);
+
 
         startView = findViewById(id.startDate);
         startView.setText(plantAllInfo.getPlantCreatedDate().substring(0,10));
@@ -180,7 +186,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
         idx = diaries.size()-1;
 
         detailImageView = findViewById(id.diaryDetailImage);
-        Glide.with(DiaryDetailActivity.this).load(diaries.get(idx).getImagePath()).into(detailImageView);
+        Glide.with(DiaryDetailActivity.this).load(URL + diaries.get(idx).getImagePath()).into(detailImageView);
 
         contentView = findViewById(R.id.diaryContent);
         contentView.setText(diaries.get(idx).getContent());
@@ -210,11 +216,11 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
 
         // sharedpreference practice
         pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        userId = pref.getString("userNickname", "Null");
-        userImg = pref.getString("userImg", "Null");
+        userId = pref.getString("pref_name", "Null");
+        userImg = pref.getString("pref_img", "Null");
 
         commentImgView = findViewById(id.commentProfile);
-        Glide.with(DiaryDetailActivity.this).load(userImg).into(commentImgView);
+        Glide.with(DiaryDetailActivity.this).load(URL + userImg).into(commentImgView);
 
         nicknameView = findViewById(id.inputComment);
         nicknameView.setHint(userId + "(으)로 댓글 달기...");
@@ -265,7 +271,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
                 idx = idx - 1;
 
                 detailImageView = findViewById(id.diaryDetailImage);
-                Glide.with(DiaryDetailActivity.this).load(diaries.get(idx).getImagePath()).into(detailImageView);
+                Glide.with(DiaryDetailActivity.this).load(URL + diaries.get(idx).getImagePath()).into(detailImageView);
 
                 contentView = findViewById(R.id.diaryContent);
                 contentView.setText(diaries.get(idx).getContent());
@@ -274,6 +280,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
                 likesView.setText(diaries.get(idx).getLikes()+"");
                 likeCnt = diaries.get(idx).getLikes();
 
+                formerBtn.setVisibility(View.VISIBLE);
                 List<DetailDiaryCommentDTO> callComments = diaries.get(idx).getComments();
                 if (callComments != null){
                     recyclerView.setAdapter(new CommentAdapter(getApplicationContext(), callComments));
@@ -289,11 +296,11 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
                     nextBtn.setVisibility(View.GONE);
                 }
 
-                commentImgView = findViewById(id.commentProfile);
-                Glide.with(DiaryDetailActivity.this).load(userImg).into(commentImgView);
+                //commentImgView = findViewById(id.commentProfile);
+                //Glide.with(DiaryDetailActivity.this).load(userImg).into(commentImgView);
 
-                nicknameView = findViewById(id.inputComment);
-                nicknameView.setHint(userId + "(으)로 댓글 달기...");
+                //nicknameView = findViewById(id.inputComment);
+                //nicknameView.setHint(userId + "(으)로 댓글 달기...");
             }
         });
 
@@ -304,7 +311,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
                 idx = idx + 1;
 
                 detailImageView = findViewById(id.diaryDetailImage);
-                Glide.with(DiaryDetailActivity.this).load(diaries.get(idx).getImagePath()).into(detailImageView);
+                Glide.with(DiaryDetailActivity.this).load(URL + diaries.get(idx).getImagePath()).into(detailImageView);
 
                 contentView = findViewById(R.id.diaryContent);
                 contentView.setText(diaries.get(idx).getContent());
@@ -328,11 +335,11 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
                     nextBtn.setVisibility(View.GONE);
                 }
 
-                commentImgView = findViewById(id.commentProfile);
-                Glide.with(DiaryDetailActivity.this).load(userImg).into(commentImgView);
+                //commentImgView = findViewById(id.commentProfile);
+                //Glide.with(DiaryDetailActivity.this).load(URL + userImg).into(commentImgView);
 
-                nicknameView = findViewById(id.inputComment);
-                nicknameView.setHint(userId + "(으)로 댓글 달기...");
+                //nicknameView = findViewById(id.inputComment);
+                //nicknameView.setHint(userId + "(으)로 댓글 달기...");
             }
         });
 
@@ -363,11 +370,45 @@ public class DiaryDetailActivity extends AppCompatActivity implements PopupMenu.
         commentAddView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String diaryId, userId, userName, content, profilePath;
+
+                diaryId = diaries.get(idx).getDiaryId();
+                userId = pref.getString("userId", "Null");
+                userName = pref.getString("userNickname", "Null");
+                content = commentContentView.getText().toString();
+                profilePath = pref.getString("userImg", "Null");
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://maryfarm.shop/maryfarm-plant-service/api/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                ServerAPI serverAPI = retrofit.create(ServerAPI.class);
+                AddComment addComment = new AddComment(diaryId, userId, userName, content, profilePath);
+                Call<AddComment> call = serverAPI.postComment(addComment);
+                call.enqueue(new Callback<AddComment>() {
+                    @Override
+                    public void onResponse(Call<AddComment> call, Response<AddComment> response) {
+                        if(!response.isSuccessful()){
+                            return;
+                        }
+                        finish();//인텐트 종료
+                        overridePendingTransition(0, 0);//인텐트 효과 없애기
+                        Intent intent = getIntent(); //인텐트
+                        startActivity(intent); //액티비티 열기
+                        overridePendingTransition(0, 0);//인텐트 효과 없애기
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddComment> call, Throwable t) {
+                        Log.d("", "onFailure: "+t.toString());
+                    }
+                });
+
                 Toast.makeText(getApplicationContext(), "🌱🌻🌼 축 재배완료! 🥕🥦🌶", Toast.LENGTH_LONG).show();
                 commentContentView.setText(null);
             }
         });
-        Log.d("check", "onCreate: !!!!" + plantAllInfo.getTitle());
     }
 
     // ... 버튼 클릭시 팝업 메뉴 출력 (일지 수정, 일지 추가, 지배완료)

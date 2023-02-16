@@ -1,0 +1,130 @@
+<resources>
+    <string name="app_name">MaryFarm</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_basic">Basic Example</string>
+    <string name="title_activity_disable">Disabled Days Example</string>
+    <string name="title_activity_customize_xml">XML Customization Example</string>
+    <string name="title_activity_customize_code">Programmatic Customization Example</string>
+    <string name="title_activity_dynamic_setters">Dynamic Setters Test</string>
+    <string name="title_activity_custom_tile_size">Custom tile width/height</string>
+    <string name="title_activity_old_calendar">Old CalendarView</string>
+    <string name="title_activity_dialogs">Calendar in Dialogs</string>
+    <string name="title_activity_decorators">Calendar with Decorators</string>
+    <string name="title_activity_getters">Calendar with Getters</string>
+    <string name="title_activity_rotation">Rotation Example</string>
+    <string name="title_activity_selections">Calendar Selection Modes</string>
+    <string name="title_activity_basic_modes">Calendar with Dynamic Modes</string>
+    <string name="title_activity_multiple_view">Multiple Basic Calendars</string>
+    <string name="title_activity_multiple_size">Many-Sized Calendars</string>
+
+    <string-array name="custom_weekdays">
+        <item>월</item>
+        <item>화</item>
+        <item>수</item>
+        <item>목</item>
+        <item>금</item>
+        <item>토</item>
+        <item>일</item>
+    </string-array>
+
+    <string-array name="custom_months">
+        <item>1월</item>
+        <item>2월</item>
+        <item>3월</item>
+        <item>4월</item>
+        <item>5월</item>
+        <item>6월</item>
+        <item>7월</item>
+        <item>8월</item>
+        <item>9월</item>
+        <item>10월</item>
+        <item>11월</item>
+        <item>12월</item>
+    </string-array>
+
+    <string name="label_normal">Fitted for screen (common use)</string>
+    <string name="label_small">Fitted for small layout parameters</string>
+    <string name="label_medium">Tile size specified</string>
+    <string name="label_thin">Tile width and height specified (thin)</string>
+    <string name="label_wide">Tile width and height specified (wide)</string>
+
+
+    <string name="today">Today is the day</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string-array name="plants_type">
+        <item>-선택-</item>
+        <item>딸기</item>
+        <item>수박</item>
+        <item>해바라기</item>
+        <item>선인장</item>
+        <item>상추</item>
+        <item>국화</item>
+        <item>고구마</item>
+        <item>감자</item>
+        <item>파인애플</item>
+    </string-array>
+
+    <!-- 관섭 디테일 페이지 test 자료   -->
+    <string name="diary_content">나는 내가 되고
+별은 영원히 빛나고
+잠들지 않는
+꿈을 꾸고 있어
+바보 같은 나는
+내가 될 수 없단 걸
+눈을 뜨고야
+그걸 알게 됐죠
+나는 내가 되고
+별은 영원히 빛나고
+잠들지 않는
+꿈을 꾸고 있어
+바보 같은 나는
+내가 될 수 없단 걸
+눈을 뜨고야
+그걸 알게 됐죠...
+    </string>
+    <string name="title_activity_pick_algorithm">PickAlgorithm</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <!--  채팅용  -->
+    <string name="send_mode_1">Echo STOMP</string>
+    <string name="send_mode_2">Echo REST</string>
+    <string name="connect_stomp">Connect STOMP</string>
+    <string name="disconnect_stomp">DISCONNECT STOMP</string>
+    <!--  채팅용 끝  -->
+
+    <!--     board 시작    -->
+    <string-array name="board_spinner">
+        <item> 서울 </item>
+        <item> 인천 </item>
+        <item> 강원 </item>
+        <item> 충청 </item>
+        <item> 경상 </item>
+        <item> 전라 </item>
+        <item> 제주 </item>
+    </string-array>
+
+    <string-array name="board_write_spinner">
+        <item> 지역 선택 </item>
+        <item> 서울 </item>
+        <item> 인천 </item>
+        <item> 강원 </item>
+        <item> 충청 </item>
+        <item> 경상 </item>
+        <item> 전라 </item>
+        <item> 제주 </item>
+    </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <!--     board 끝    -->
+
+    <!--  위젯  -->
+    <string name="emoji">오늘도 잘 자라거라 &#127793;</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

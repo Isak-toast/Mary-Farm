@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/menu_bottom_home">
+
+    <fragment
+        android:id="@+id/menu_bottom_home"
+        android:name="com.numberONE.maryfarm.ui.home.HomeFragment"
+        android:label="메인"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/menu_bottom_chat"
+        android:name="com.numberONE.maryfarm.ui.chat.ChatFragment"
+        android:label="메세지"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/menu_bottom_write"
+        android:name="com.numberONE.maryfarm.ui.diary.WriteFragment"
+        android:label="새 일지"
+        tools:layout="@layout/fragment_write" />
+    <fragment
+        android:id="@+id/menu_bottom_alarm"
+        android:name="com.numberONE.maryfarm.ui.alarm.AlarmFragment"
+        android:label="알림"
+        tools:layout="@layout/fragment_alarm" />
+    <fragment
+        android:id="@+id/menu_bottom_farm"
+        android:name="com.numberONE.maryfarm.ui.myfarm.MyfarmFragment"
+        android:label="내농장"
+        tools:layout="@layout/fragment_myfarm_profile" />
+
+</navigation>

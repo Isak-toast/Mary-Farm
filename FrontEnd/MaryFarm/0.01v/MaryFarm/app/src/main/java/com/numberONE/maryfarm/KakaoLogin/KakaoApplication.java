@@ -5,8 +5,6 @@ import android.app.Application;
 import com.kakao.sdk.common.KakaoSdk;
 import com.numberONE.maryfarm.BuildConfig;
 
-import retrofit2.http.HEAD;
-
 public class KakaoApplication extends Application {
     @Override
     public void onCreate() {

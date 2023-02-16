@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.myfarm.MyfarmFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,9 +21,6 @@
             android:layout_width="110dp"
             android:layout_height="140dp"
             android:layout_marginStart="24dp"
-            android:src="@drawable/profile_default"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/indicator"
             tools:srcCompat="@tools:sample/avatars" />
@@ -114,18 +112,18 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/tier2" />
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/tier3" />
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/tier4" />
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/tier5" />
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier3" />-->
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier4" />-->
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier5" />-->
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -174,7 +172,7 @@
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/suggest_1"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
 
     </LinearLayout>
@@ -186,6 +184,7 @@
         android:scrollbarFadeDuration="0"
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        android:layout_marginBottom="70dp"/>
 
 </LinearLayout>

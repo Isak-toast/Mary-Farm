@@ -25,6 +25,10 @@ public class BoardComments {
     @Expose
     private int likes;
 
+    @SerializedName("profilePath")
+    @Expose
+    private String profile;
+
     public String getCommentId() {
         return commentId;
     }
@@ -65,6 +69,14 @@ public class BoardComments {
         this.likes = likes;
     }
 
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
     @Override
     public String toString() {
         return "BoardComments{" +
@@ -73,6 +85,7 @@ public class BoardComments {
                 ", userName='" + userName + '\'' +
                 ", content='" + content + '\'' +
                 ", likes=" + likes +
+                ", profile='" + profile + '\'' +
                 '}';
     }
 }
