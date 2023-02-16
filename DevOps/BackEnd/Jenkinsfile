@@ -31,13 +31,13 @@ pipeline {
  
     stages {
         stage("Build") {
+                        updateGitlabCommitStatus name: 'master', state: 'running'
             parallel{
-                stage('back'){
+                stage('master'){
                     when{
-                        branch 'back';
+                        branch 'master';
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'back', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -150,12 +150,12 @@ pipeline {
         }
         stage("Deploy") {
             parallel{
-                stage('back'){
+                stage('master'){
                     when{
-                        branch 'back';
+                        branch 'master';
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'back', state: 'running'
+                        updateGitlabCommitStatus name: 'master', state: 'running'
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
