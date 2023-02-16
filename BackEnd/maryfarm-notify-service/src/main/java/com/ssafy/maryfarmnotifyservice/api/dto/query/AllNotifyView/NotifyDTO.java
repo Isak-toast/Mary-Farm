@@ -1,18 +1,20 @@
-package com.ssafy.maryfarmchatservice.api.dto.message;
+package com.ssafy.maryfarmnotifyservice.api.dto.query.AllNotifyView;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.Nonnull;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReceiveMessageRequestDTO {
-    private String roomId;
-    private String userId;
+public class NotifyDTO {
+    private String notifyId;
+    private String type;
+    private String content;
     private String followerId;
     private String plantId;
     private String diaryId;
+
 }

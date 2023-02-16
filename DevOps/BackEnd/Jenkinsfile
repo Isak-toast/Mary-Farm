@@ -33,6 +33,7 @@ pipeline {
         stage("Build") {
             parallel{
                 stage('master'){
+<<<<<<< HEAD
                     when{
                         branch 'master';
 <<<<<<< HEAD
@@ -56,10 +57,13 @@ pipeline {
                 }
                 
                 stage('only master for all service'){
+=======
+>>>>>>> maryfarm-notify-service
                     when{
                         branch 'master';
                     }
                     steps{
+<<<<<<< HEAD
                         updateGitlabCommitStatus name: 'build', state: 'running'
                         node(slave_back){
                             echo "${env.BRANCH_NAME} ->  spring CI running"
@@ -70,6 +74,10 @@ pipeline {
                         updateGitlabCommitStatus name: 'master', state: 'running'
                         node(slave_back){
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'master', state: 'running'
+                        node(slave_back){
+>>>>>>> maryfarm-notify-service
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
                                 parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
@@ -83,6 +91,7 @@ pipeline {
                     }
                     steps {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
 ========
@@ -91,6 +100,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -106,6 +118,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
 ========
@@ -114,6 +127,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -129,6 +145,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
 ========
@@ -137,6 +154,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -151,6 +171,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
 ========
@@ -159,6 +180,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -173,6 +197,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
 ========
@@ -181,6 +206,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -195,6 +223,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
 ========
@@ -203,6 +232,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -217,6 +249,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
 ========
@@ -225,6 +258,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CI-Pipeline-AWS", 
@@ -243,6 +279,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'master', state: 'running'
                         node(slave_back){
@@ -255,6 +292,10 @@ pipeline {
                         updateGitlabCommitStatus name: 'master', state: 'running'
                         node(slave_back){
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'master', state: 'running'
+                        node(slave_back){
+>>>>>>> maryfarm-notify-service
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
                                 parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
@@ -268,6 +309,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
 ========
@@ -276,6 +318,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -291,6 +336,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
 ========
@@ -299,6 +345,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -314,6 +363,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
 ========
@@ -322,6 +372,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -337,6 +390,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
 ========
@@ -345,6 +399,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -360,6 +417,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
 ========
@@ -368,6 +426,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -383,6 +444,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
 ========
@@ -391,6 +453,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 
@@ -406,6 +471,7 @@ pipeline {
                     }
                     steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:DevOps/BackEnd/Jenkinsfile
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
 ========
@@ -414,6 +480,9 @@ pipeline {
 =======
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
 >>>>>>> maryfarm-board-service
+=======
+                        updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
+>>>>>>> maryfarm-notify-service
                         node(slave_back){
                             build(
                                 job: "POD-CD-Pipeline-AWS", 

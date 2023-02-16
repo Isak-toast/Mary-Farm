@@ -5,7 +5,11 @@ spring:
     config:
       uri: https://172.26.1.228:8888
 <<<<<<< HEAD
+<<<<<<< HEAD
       name: maryfarm-apigateway-service
 =======
       name: maryfarm-board-service
 >>>>>>> maryfarm-board-service
+=======
+      name: maryfarm-board-service
+>>>>>>> maryfarm-notify-service
