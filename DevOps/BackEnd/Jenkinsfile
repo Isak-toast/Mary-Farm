@@ -1,64 +1,38 @@
-
-slave_back = 'slave2'
-
 pipeline {
-    agent none
-    options {
-        timestamps()
-        gitLabConnection('gitlab-connection')
-        gitlabCommitStatus(name: 'Spring')
-        gitlabBuilds(builds: ['Build', 'Deploy'])
+    agent {
+        label "slave2"
     }
-    triggers {
-        gitlab(
-            triggerOnPush: false,
-            triggerOnMergeRequest: true, 
-            triggerOpenMergeRequestOnPush: "source",
-            skipWorkInProgressMergeRequest: true,
-            ciSkip: true,
-            setBuildDescription: true,
-            addNoteOnMergeRequest: true,
-            addCiMessage: true,
-            addVoteOnMergeRequest: true,
-            acceptMergeRequestOnSuccess: false,
-            branchFilterType: "NameBasedFilter",
-            includeBranchesSpec: "dev, test, back",
-            excludeBranchesSpec: "",
-            pendingBuildName: "Spring",
-            cancelPendingBuildsOnUpdate: true
-        )
+    options {
+        gitLabConnection('gitlab-connection')
+        gitlabBuilds(builds: ['Build', 'Deploy'])
     }
 
     stages {
-        stage("Build") {
+        stage('Build') {
             parallel{
-                stage('master'){
+                stage('spring build'){
                     when{
-                        branch 'master';
+                        branch 'master'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'build', state: 'running'
-                        node(slave_front){
-                            echo "${env.BRANCH_NAME} ->  Android running"
-                            build(
-                                job: "POD-Android-pipeline", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        updateGitlabCommitStatus name: 'spring build', state: 'running'
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'spring build', state: 'failed'
                         }
-                    }
-                }
-                
-                stage('only master for all service'){
-                    when{
-                        branch 'master';
-                    }
-                    steps{
-                        updateGitlabCommitStatus name: 'master', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        unstable {
+                            updateGitlabCommitStatus name: 'spring build', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'spring build', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'spring build', state: 'success'
                         }
                     }
                 }
@@ -68,14 +42,25 @@ pipeline {
                     }
                     steps {
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-calendar-service") {
                     when{
@@ -83,14 +68,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-chat-service") {
                     when{
@@ -98,11 +94,23 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'success'
                         }
                     }
                 }
@@ -112,11 +120,23 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'success'
                         }
                     }
                 }
@@ -126,11 +146,23 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'success'
                         }
                     }
                 }
@@ -140,11 +172,23 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'success'
                         }
                     }
                 }
@@ -154,29 +198,67 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CI-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CI-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'success'
                         }
                     }
                 }
             }
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Build', state: 'failed'
+                }
+                unstable {
+                    updateGitlabCommitStatus name: 'Build', state: 'failed'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Build', state: 'canceled'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Build', state: 'success'
+                }
+            }
         }
-        stage("Deploy") {
+        stage('Deploy') {
             parallel{
-                stage('master'){
+                stage('spring deploy'){
                     when{
-                        branch 'master';
+                        branch 'master'
                     }
                     steps{
-                        updateGitlabCommitStatus name: 'master', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        updateGitlabCommitStatus name: 'spring deploy', state: 'running'
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'spring deploy', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'spring deploy', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'spring deploy', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'spring deploy', state: 'success'
                         }
                     }
                 }
@@ -184,16 +266,27 @@ pipeline {
                     when{
                         branch 'maryfarm-board-service'
                     }
-                    steps{
+                    steps {
                         updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-board-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-calendar-service") {
                     when{
@@ -201,14 +294,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-calendar-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-chat-service") {
                     when{
@@ -216,14 +320,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-chat-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-notify-service") {
                     when{
@@ -231,14 +346,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-notify-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-plant-service") {
                     when{
@@ -246,14 +372,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-plant-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-user-service") {
                     when{
@@ -261,14 +398,25 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-user-service', state: 'success'
                         }
                     }
-
                 }
                 stage("maryfarm-consumer-service") {
                     when{
@@ -276,26 +424,41 @@ pipeline {
                     }
                     steps{
                         updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'running'
-                        node(slave_back){
-                            build(
-                                job: "POD-CD-Pipeline-AWS", 
-                                parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                            )
+                        build(
+                            job: "POD-CD-Pipeline-AWS", 
+                            parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                        )
+                    }
+                    post {
+                        failure {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'failed'
+                        }
+                        unstable {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'failed'
+                        }
+                        aborted {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'canceled'
+                        }
+                        success {
+                            updateGitlabCommitStatus name: 'maryfarm-consumer-service', state: 'success'
                         }
                     }
                 }
             }
-        }
-    }
-    post {
-        failure {
-            updateGitlabCommitStatus name: 'Spring', state: 'failed'
-        }
-        success {
-            updateGitlabCommitStatus name: 'Spring', state: 'success'
-        }
-        aborted {
-            updateGitlabCommitStatus name: 'Spring', state: 'canceled'
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Deploy', state: 'failed'
+                }
+                unstable {
+                    updateGitlabCommitStatus name: 'Deploy', state: 'failed'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Deploy', state: 'canceled'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Deploy', state: 'success'
+                }
+            }
         }
     }
 }
