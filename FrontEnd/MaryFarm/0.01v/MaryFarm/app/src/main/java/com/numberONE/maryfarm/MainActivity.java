@@ -53,6 +53,7 @@ import retrofit2.http.HEAD;
 
 public class MainActivity extends AppCompatActivity {
     private String URL = "https://s3.ap-northeast-2.amazonaws.com/maryfarm.bucket/";
+
     private static String TAG = "MainActivity";
 
     private ActivityMainBinding binding;

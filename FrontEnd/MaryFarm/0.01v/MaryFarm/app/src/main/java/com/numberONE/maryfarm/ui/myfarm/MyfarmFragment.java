@@ -96,8 +96,8 @@ public class MyfarmFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         Retrofit retrofit1 = new Retrofit.Builder()
-                //.baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
-                .baseUrl("https://maryfarm.shop/maryfarm-user-service/api/")
+                .baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
+//                .baseUrl("https://maryfarm.shop/maryfarm-user-service/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -115,8 +115,9 @@ public class MyfarmFragment extends Fragment {
 //                }
                 Log.d("userID ",userId);
 
-                followerCnt.setText(response.body().getFollowerCount()+"");
-                followingCnt.setText(response.body().getFollowingCount()+"");
+                //followerCnt.setText(response.body().getFollowerCount()+"");
+                //
+                // followingCnt.setText(response.body().getFollowingCount()+"");
 
                 Bundle bundle=getArguments();// 번들 받기
                 if(bundle!=null){
@@ -134,8 +135,8 @@ public class MyfarmFragment extends Fragment {
 
         // 업로드한 작물 피드 유무 확인
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
-                .baseUrl("https://maryfarm.shop/maryfarm-plant-service/api/")
+                .baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
+//                .baseUrl("https://maryfarm.shop/maryfarm-plant-service/api/")
                 //.baseUrl("http://192.168.31.244:8000/maryfarm-plant-service/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -165,8 +166,8 @@ public class MyfarmFragment extends Fragment {
 
                         Gson gson = new GsonBuilder().setLenient().create();
                         Retrofit retrofit2 = new Retrofit.Builder()
-                                //.baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
-                                .baseUrl("https://maryfarm.shop/maryfarm-plant-service/api/")
+                                .baseUrl("https://985e5bce-3b72-4068-8079-d7591e5374c9.mock.pstmn.io/api/")
+//                                .baseUrl("https://maryfarm.shop/maryfarm-plant-service/api/")
                                 //.baseUrl("http://192.168.31.244:8000/maryfarm-plant-service/api/")
                                 .addConverterFactory(GsonConverterFactory.create(gson))
                                 .build();

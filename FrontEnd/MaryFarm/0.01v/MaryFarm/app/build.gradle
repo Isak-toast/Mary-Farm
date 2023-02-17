@@ -80,7 +80,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation files('C:\\Users\\SSAFY\\Desktop\\S08P12B308\\FrontEnd\\MaryFarm\\0.01v\\MaryFarm\\app\\libs\\YouTubeAndroidPlayerApi.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
