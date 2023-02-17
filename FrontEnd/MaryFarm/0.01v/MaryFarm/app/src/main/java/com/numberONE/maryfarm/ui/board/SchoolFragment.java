@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.google.android.youtube.player.YouTubePlayerView;
 import com.numberONE.maryfarm.R;
 import com.numberONE.maryfarm.databinding.FragmentSchoolBinding;
 import com.numberONE.maryfarm.ui.chat.ChatAdapter;

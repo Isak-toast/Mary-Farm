@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="52dp"
                     android:layout_marginBottom="8dp"
-                    android:text=""
+                    android:text="7"
                     app:layout_constraintBottom_toTopOf="@+id/textView7"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="팔로우 수" />
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="52dp"
-                    android:text=""
+                    android:text="5"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="151dp"
                     tools:text="팔로워 수"
