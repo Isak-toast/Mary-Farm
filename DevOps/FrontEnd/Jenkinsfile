@@ -1,10 +1,10 @@
-
-slave_front = 'slave1'
-
 pipeline {
-    agent none
+    agent {
+        label "slave1"
+    }
     options {
         gitLabConnection('gitlab-connection')
+        gitlabBuilds(builds: ['Build', 'Deploy'])
     }
 
     stages {
@@ -21,17 +21,17 @@ pipeline {
                     )
                 }
             }
-        }
-    }
-    post {
-        failure {
-            updateGitlabCommitStatus name: 'Android build', state: 'failed'
-        }
-        success {
-            updateGitlabCommitStatus name: 'Android build', state: 'success'
-        }
-        aborted {
-            updateGitlabCommitStatus name: 'Android build', state: 'canceled'
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Android build', state: 'failed'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Android build', state: 'success'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Android build', state: 'canceled'
+                }
+            }
         }
     }
 }
