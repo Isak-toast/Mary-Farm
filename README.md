@@ -1,7 +1,7 @@
 # 👒마리팜 My Little Farm
 ![MaryFarm Title](./Maryfarmassets/login_title.jpg)
 
-> 나만의 작은 텃밭을 기르는 도시 농부들을 위한 큐레이팅 SNS 서비스
+나만의 작은 텃밭을 기르는 도시 농부들을 위한 큐레이팅 SNS 서비스
 
 ## 📙 Duration <br>
 2023.01.09 ~ 2023.02.17 <br>
@@ -9,30 +9,29 @@
 ## ✨ Features
 
 ### 베란다 텃밭을 위한 각종 정보 제공 및 작물 추천
-![Image](./Maryfarmassets/function3.png)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_03.jpg)
+![Image](./Maryfarmassets/function3.png)<img src="./Maryfarmassets/KakaoTalk_20230217_130213374_03.jpg" width="400" height="180">
 
 ### 작물 별 쌓이는 재배 일지
 - 날짜별 사진 및 기록들을 작물별로 기록하여, 해당 식물의 성장 기록을 쉽게 볼 수 있도록 지원
 
 ![Image](./Maryfarmassets/function1.png)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_09.jpg)
+<img src="./Maryfarmassets/KakaoTalk_20230217_130213374_09.jpg" width="400" height="180">
 
 ### 작물 생장을 위한 알림 제공
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_12.jpg)
+<img src="./Maryfarmassets/KakaoTalk_20230217_130213374_12.jpg" width="400" height="180">
 
 ### 식집사들과의 소통 기능
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_01.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_05.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_10.jpg)
+ ![image.jpg1](./Maryfarmassets/KakaoTalk_20230217_130213374.jpg) |![image.jpg2](./Maryfarmassets/KakaoTalk_20230217_130213374_01.jpg)
+--- | --- | 
+ ![image.jpg1](./Maryfarmassets/KakaoTalk_20230217_130213374_05.jpg) |![image.jpg2](./Maryfarmassets/KakaoTalk_20230217_130213374_10.jpg)
+--- | --- | 
 
 ### 위젯 기능
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_15.jpg)
+<img src="./Maryfarmassets/KakaoTalk_20230217_130213374_15.jpg" width="400" height="180">
 
 ### 검색 기능
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_13.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_14.jpg)
+ ![image.jpg1](./Maryfarmassets/KakaoTalk_20230217_130213374_13.jpg) |![image.jpg2](./Maryfarmassets/KakaoTalk_20230217_130213374_14.jpg)
+--- | --- | 
 
 ## 🔨Tech Stack
 ![MaryFarm Tech Stack](./Maryfarmassets/MaryFarmTechStack.png)
