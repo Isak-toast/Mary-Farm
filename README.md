@@ -24,7 +24,6 @@
  ![image.jpg1](./Maryfarmassets/KakaoTalk_20230217_130213374.jpg) |![image.jpg2](./Maryfarmassets/KakaoTalk_20230217_130213374_01.jpg)
 --- | --- | 
  ![image.jpg1](./Maryfarmassets/KakaoTalk_20230217_130213374_05.jpg) |![image.jpg2](./Maryfarmassets/KakaoTalk_20230217_130213374_10.jpg)
---- | --- | 
 
 ### 위젯 기능
 <img src="./Maryfarmassets/KakaoTalk_20230217_130213374_15.jpg" width="400" height="180">
@@ -75,7 +74,7 @@
 ### 🚜시퀀스 다이어그램
 - [Chat Diagram](https://www.notion.so/Chat-Diagram-c73c103c26df405fbb0b6cb9901e7744)
 - [Login Diagram](https://www.notion.so/Login-Diagram-f0a75377f1f54f22b85a24c0de75af33)
-- [형태소 Diagram](https://www.notion.so/Diagram-bb973432457a4200812d364051d574b4?pvs=4)
+- [Tag Search Diagram](https://www.notion.so/Diagram-bb973432457a4200812d364051d574b4?pvs=4)
 
 ### 🐳 배포
 - [마리팜 배포 절차](https://www.notion.so/81823b0d9494461288f01c3031b3c08d?pvs=4)
