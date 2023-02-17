@@ -14,12 +14,10 @@ pipeline {
             }
             steps{
                 updateGitlabCommitStatus name: 'Android build', state: 'running'
-                node(slave_front){
-                    build(
-                        job: "POD-Android-pipeline", 
-                        parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
-                    )
-                }
+                build(
+                    job: "POD-Android-pipeline", 
+                    parameters: [string(name:"BRANCH_NAME", value:"${env.BRANCH_NAME}")]
+                )
             }
             post {
                 failure {
