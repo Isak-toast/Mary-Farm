@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.diary.WriteFragment"
+    android:orientation="vertical"
+    android:id="@+id/boardWriteFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    <ImageView
+        android:id="@+id/write_close_img"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/close"
+        />
+        <Button
+            android:id="@+id/write_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:background="@color/purple_200"
+            android:textSize="10sp"
+            android:text="등록"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/board_type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:entries="@array/board_write_spinner"
+        />
+
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint=" 제목"
+        />
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="top"
+        android:hint="내용을 입력하세요"
+        android:height="130dp"
+        />
+
+
+
+</LinearLayout>

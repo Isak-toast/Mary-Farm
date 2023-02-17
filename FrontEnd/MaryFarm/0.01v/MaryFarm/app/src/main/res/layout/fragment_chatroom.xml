@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.chat.ChatRoomFragment">
+    <LinearLayout
+        android:id="@+id/chat_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/chat_room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColorHighlight="@color/purple_200"
+            android:layout_centerHorizontal="true"
+            android:text="채팅방"
+            android:layout_alignParentTop="true"/>
+        <ImageView
+            android:id="@+id/chat_title_tier"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messages_chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat_title"
+        />
+    <RelativeLayout
+        android:id="@+id/chatsendvisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/messages_chat_list"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilecalm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="7.5dp"
+            android:layout_marginTop="7.5dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="7.5dp"
+            android:src="@drawable/profilecalm"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chatsendContent"
+            android:background="@drawable/chat_border"
+            android:padding="7dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:layout_toLeftOf="@+id/profilecalm"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/chatsendDate"
+            android:text=""
+            android:textColor="#ACACAC"
+            android:textSize="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@id/profilecalm"
+            android:layout_marginHorizontal="15dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/chateditbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        >
+
+        <EditText
+            android:id="@+id/message_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"/>
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/white"
+            android:outlineAmbientShadowColor="@color/purple_500"
+            android:text="전송"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

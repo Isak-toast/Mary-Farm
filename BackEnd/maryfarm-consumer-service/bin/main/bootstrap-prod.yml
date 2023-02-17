@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource
+    config:
+<<<<<<< HEAD
+<<<<<<<< HEAD:BackEnd/maryfarm-chat-service/src/main/resources/bootstrap-prod.yml
+      uri: http://172.26.1.228:8888
+      name: maryfarm-chat-service
+========
+      uri: http://172.26.2.9:8888
+      name: maryfarm-consumer-service
+>>>>>>>> e8af5c41ed5066832b976b5d47ca4864d6b0aaef:BackEnd/maryfarm-consumer-service/bin/main/bootstrap-prod.yml
+=======
+      uri: https://172.26.1.228:8888
+      name: maryfarm-consumer-service
+>>>>>>> 6bf764af549bf336de88cd76f368b4da5341a41b

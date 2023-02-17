@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/follower_feed"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="horizontal" />
+
+    <TextView
+        android:id="@+id/alarmText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/follower_feed"
+        android:gravity="center"
+        android:text="알림멘트 가져올 자리" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/other_feed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_below="@+id/alarmText"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical" />
+
+
+    <!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text=" 피드 프래그먼트 입니다 "-->
+<!--        android:background="#4CAF50"-->
+<!--        android:gravity="center"/>-->
+
+</RelativeLayout>

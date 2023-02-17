@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 인터넷 사용 권한 설정 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- 카메라 사용 권한 설정 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 사용 권한 설정 -->
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="false" />
@@ -14,8 +11,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
-    <!--    android:networkSecurityConfig="@xml/network_security_config"-->
     <application
         android:name=".KakaoLogin.KakaoApplication"
         android:allowBackup="true"
@@ -26,19 +21,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaryFarm"
-        tools:targetApi="32"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="32">
+
+        <service
+            android:name=".MyRemoteViewsService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name=".WidgetMary"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_mary_info" />
+        </receiver>
 
         <activity
-            android:name=".Pick.PickAlgorithm"
-            android:exported="false"
-            android:label="@string/title_activity_pick_algorithm"
-            android:theme="@style/Theme.MaryFarm.NoActionBar">
+            android:name=".ui.AlgorithmPage.sample.RecommendSample1"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".ui.AlgorithmPage.sample.RecommendSample2"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".ui.AlgorithmPage.sample.RecommendSample3"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
 
+        <activity
+            android:name=".ui.AlgorithmPage.RecommendActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Diary.DiaryModifyActivity"
             android:exported="false">
@@ -48,21 +78,6 @@
         </activity>
         <activity
             android:name=".MyfarmProfile.MyPageActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Chat.ChatActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-        <activity
-            android:name=".Alarm.AlarmActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -85,61 +100,53 @@
         <activity
             android:name=".Diary.DiaryDetailActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait">
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".KakaoLogin.KakaoLoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-
-                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
-                <!-- 관섭 key : 1fc6b60080fc2f00d7f43085d079e13e-->
-                <!-- 유범 key:  f059c3fbe021d13fa0a5ffa33e906bf8-->
-                <!-- 환석 key:  ca5f329ea3d04e9a001843861e32e8b2-->
-
+                <!-- local.properties 설정 mani_kakao_key와 연결 -->
                 <data
                     android:host="oauth"
-                    android:scheme="kakaoca5f329ea3d04e9a001843861e32e8b2" />
+                    android:scheme="${KakaoKey}" />
             </intent-filter>
         </activity>
 

@@ -54,8 +54,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="plants_type">
         <item>-선택-</item>
@@ -92,4 +90,51 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
+    <!--  채팅용  -->
+    <string name="send_mode_1">Echo STOMP</string>
+    <string name="send_mode_2">Echo REST</string>
+    <string name="connect_stomp">Connect STOMP</string>
+    <string name="disconnect_stomp">DISCONNECT STOMP</string>
+    <!--  채팅용 끝  -->
+
+    <!--     board 시작    -->
+    <string-array name="board_spinner">
+        <item> 서울 </item>
+        <item> 인천 </item>
+        <item> 강원 </item>
+        <item> 충청 </item>
+        <item> 경상 </item>
+        <item> 전라 </item>
+        <item> 제주 </item>
+    </string-array>
+
+    <string-array name="board_write_spinner">
+        <item> 지역 선택 </item>
+        <item> 서울 </item>
+        <item> 인천 </item>
+        <item> 강원 </item>
+        <item> 충청 </item>
+        <item> 경상 </item>
+        <item> 전라 </item>
+        <item> 제주 </item>
+    </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <!--     board 끝    -->
+
+    <!--  위젯  -->
+    <string name="emoji">오늘도 잘 자라거라 &#127793;</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_youtube">YoutubeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="feed_alarm">&#128161; 오늘은\n호박 &#128072; 분갈이 할 타이밍!</string>
 </resources>

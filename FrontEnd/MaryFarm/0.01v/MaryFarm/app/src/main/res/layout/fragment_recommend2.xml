@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+android:id="@+id/recommendContainer2"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.AlgorithmPage.RecommendFragment2">
+
+
+<TextView
+    android:id="@+id/recommendTextView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="5개의 항목으로 \n작물을 추천 받아 보세요!"
+    android:textSize="40dp"
+    android:fontFamily="@font/baemin_jua"
+    android:padding="10dp"
+    />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="120dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선호하는 꽃잎의 색은 무엇인가요?"
+        android:fontFamily="@font/baemin_jua"
+        android:textSize="25dp"
+        android:gravity="center"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/section_1"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_blue"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="파랑"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/section_2"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_purple"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="보라"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/section_3"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_pink"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="분홍"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/section_4"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_red"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="빨강"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:id="@+id/section_5"
+                android:layout_width="match_parent"
+                android:layout_height="171dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_orange" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오렌지"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/section_6"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower_yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="노랑"
+                android:textSize="30dp"
+                android:fontFamily="@font/baemin_jua"
+                android:gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout><LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:orientation="horizontal"
+    android:layout_weight="1"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <ImageButton
+            android:id="@+id/section_7"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/flower_white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="하양"
+            android:textSize="30dp"
+            android:fontFamily="@font/baemin_jua"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <ImageButton
+            android:id="@+id/section_8"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/flower_mix"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="혼합색상"
+            android:textSize="30dp"
+            android:fontFamily="@font/baemin_jua"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <ImageButton
+            android:id="@+id/section_9"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/flower_random"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기타"
+            android:textSize="30dp"
+            android:fontFamily="@font/baemin_jua"
+            android:gravity="center"
+            />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
+</FrameLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <ImageView
+        android:id="@+id/diaryDetailImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_cosmos" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/flowerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스모스"
+                android:textSize="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/flowerInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수줍게 전하는 마음"
+                android:textSize="15dp"
+                android:layout_toRightOf="@+id/flowerName"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBottom="@+id/flowerName" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/flowerLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="꽃말 : 사랑의 고백, 매혹, 영원한 애정, 경솔"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/flowerBlooming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="개화시기 : 4월~5월"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/flowerArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="분포 : 북아프리카~지중해"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/flowerSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="크기 : 20~60cm"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/pick_one_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="유사 꽃말 식물"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pick_one_list"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="horizontal" />
+
+
+</LinearLayout>

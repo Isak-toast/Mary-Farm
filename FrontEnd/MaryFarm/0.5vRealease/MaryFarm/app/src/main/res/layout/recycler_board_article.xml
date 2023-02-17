@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="7.5dp"
+        android:layout_centerVertical="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/board_article_title"
+                android:layout_toEndOf="@+id/imageview"
+                android:textColor="@color/black"
+                android:text="제목"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:id="@+id/commentDate"
+                android:layout_toEndOf="@+id/imageview"
+                android:textColor="@color/black"
+                android:text="작성자"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/content"
+            android:textColor="@color/black"
+            android:text="내용"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <ImageView
+            android:id="@+id/emptyHeartIcon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/empty_heart_icon"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/fullHeartIcon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/full_heart_icon"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

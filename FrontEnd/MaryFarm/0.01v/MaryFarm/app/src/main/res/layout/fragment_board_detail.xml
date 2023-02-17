@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.board.BoardDetailFragment"
+    android:id="@+id/boardDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/board_detail_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="지역 들어 올 공간 "/>
+
+        <TextView
+            android:id="@+id/board_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/board_detail_type"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="30sp"
+            android:hint="제목 들어올 공간 "/>
+
+        <RelativeLayout
+            android:id="@+id/userLinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/board_detail_title">
+             <de.hdodenhof.circleimageview.CircleImageView
+                 android:id="@+id/board_detail_profile"
+                 android:layout_width="40dp"
+                 android:layout_height="40dp"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginLeft="10dp"
+                 android:src="@drawable/loading_icon"
+                 />
+            <TextView
+                android:id="@+id/board_detail_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/board_detail_profile"
+                android:hint="닉네임"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/board_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/board_detail_profile"
+                android:layout_below="@id/board_detail_nickname"
+                android:hint="2222.22.22.22:22"
+                android:textSize="10sp"
+                />
+            <TextView
+                android:id="@+id/viewCntOnlyText"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/board_detail_date"
+                android:layout_below="@id/board_detail_nickname"
+                android:text="조회"
+                android:textSize="10sp"
+                />
+            <TextView
+                android:id="@+id/board_detail_viewCnt"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/viewCntOnlyText"
+                android:layout_below="@id/board_detail_nickname"
+                android:hint="00"
+                android:textSize="10sp"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/board_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/userLinearlayout"
+            android:textSize="18sp"
+            android:hint="본문 텍스트 들어올 공간 ~~"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/board_detail_comment_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="60dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/board_detail_content"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/board_detail_comment_userprofile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="7.5dp"
+                android:layout_marginTop="7.5dp"
+                android:layout_marginEnd="7.5dp"
+                android:layout_marginBottom="7.5dp"/>
+
+            <EditText
+                android:id="@+id/board_detail_comment_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toRightOf="@+id/board_detail_comment_userprofile"
+                android:hint="댓글 입력"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/board_detail_comment_add_btn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7.5dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="7.5dp"
+                android:background="@android:color/transparent"
+                android:text="등록"
+                android:textColor="@android:color/holo_blue_dark" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

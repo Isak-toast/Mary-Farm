@@ -12,17 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="110dp"
+            android:layout_height="140dp"
             android:layout_marginStart="24dp"
-            android:src="@drawable/profile_default"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/indicator"
             tools:srcCompat="@tools:sample/avatars" />
@@ -34,7 +32,7 @@
             android:layout_marginTop="12dp"
             >
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/myFarmName"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:layout_marginStart="32dp"
@@ -60,12 +58,12 @@
                     tools:text="내가 따르는 이웃" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/followCnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="52dp"
                     android:layout_marginBottom="8dp"
-                    android:text="0"
+                    android:text="7"
                     app:layout_constraintBottom_toTopOf="@+id/textView7"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="팔로우 수" />
@@ -86,78 +84,62 @@
                     app:layout_constraintTop_toTopOf="@+id/textView7"
                     tools:text="나를 따르는 이웃" />
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/followingCnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="52dp"
-                    android:text="0"
+                    android:text="5"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="151dp"
                     tools:text="팔로워 수"
                     tools:ignore="MissingConstraints" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tier1" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tier2" />
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier3" />-->
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier4" />-->
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/tier5" />-->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tier6" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tier7" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tier8" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-<!--    <me.relex.circleindicator.CircleIndicator3-->
-<!--        android:id="@+id/indicator"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="30dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="내가 소유한 뱃지 : "/>
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier1" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier2" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier3" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier4" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier5" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier6" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier7" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/tier8" />
-
-    </LinearLayout>
-
-
-
 
     <View
         android:id="@+id/farm_page_underline"
@@ -166,16 +148,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:background="#FF000000"/>
-
-
-    <Button
-        android:id="@+id/detailBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="화면전환 (Detail page)"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="677dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -190,7 +162,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/nodiary"/>
+            android:src="@drawable/nodiary"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/recommendMonthBtn"
@@ -198,30 +171,20 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/suggest_1"/>
+            android:src="@drawable/suggest_1"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
 
-
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/plantThumbnail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        >
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/profile_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarFadeDuration="0"
-            android:scrollbarSize="5dp"
-            android:scrollbarThumbVertical="@android:color/darker_gray"
-            android:scrollbars="vertical"/>
-
-    </LinearLayout>
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="70dp"/>
 
 </LinearLayout>

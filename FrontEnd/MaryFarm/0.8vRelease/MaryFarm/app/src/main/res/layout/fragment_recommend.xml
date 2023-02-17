@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.AlgorithmPage.RecommendFragment">
+
+
+    <TextView
+        android:id="@+id/recommendTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/baemin_jua"
+        android:gravity="center"
+        android:text="자, 이제 추천을 시작하지."
+        android:textSize="40dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

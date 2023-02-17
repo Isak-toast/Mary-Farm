@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/cntntsPhotoImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+
+        <TextView
+            android:id="@+id/cntntsSjTextView"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:padding="8dp"
+            android:text="꽃 이름"/>
+
+        <TextView
+            android:id="@+id/cntntsNoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+
+
+    </LinearLayout>
+</GridLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/app_widget_description"
+    android:initialKeyguardLayout="@layout/widget_mary"
+    android:initialLayout="@layout/widget_mary"
+    android:minWidth="250dp"
+    android:minHeight="40dp"
+    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewLayout="@layout/widget_mary"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="4"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="86400000"
+    android:widgetCategory="home_screen|keyguard" />
+<!--<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:description="@string/app_widget_description"-->
+<!--android:initialKeyguardLayout="@layout/widget_mary"-->
+<!--android:initialLayout="@layout/widget_mary"     위젯 레이아웃-->
+<!--android:minWidth="250dp"                        최소 넓이-->
+<!--android:minHeight="40dp"                        최소 길이-->
+<!--android:previewImage="@drawable/example_appwidget_preview"  프리뷰 이미지-->
+<!--android:previewLayout="@layout/widget_mary"-->
+<!--android:resizeMode="horizontal|vertical"        화면 크기 수정 가능 여부-->
+<!--android:targetCellWidth="4"-->
+<!--android:targetCellHeight="1"-->
+<!--android:updatePeriodMillis="86400000"           업데이트 주기 하루-->
+<!--android:widgetCategory="home_screen|keyguard" />-->

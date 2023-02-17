@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--    <item-->
+<!--        android:id="@+id/menu_search"-->
+<!--        android:title="검색"-->
+<!--        android:icon="@android:drawable/ic_search_category_default"-->
+<!--        app:actionViewClass="androidx.appcompat.widget.SearchView"/>-->
+
+    <item
+        android:id="@+id/hamburger_1"
+        android:icon="@drawable/hamburger1"
+        android:title="이장님 말씀">
+    </item>
+    <item android:title="line">
+        <menu></menu>
+    </item>
+    <item
+        android:id="@+id/hamburger_2"
+        android:icon="@drawable/hamburger2"
+        android:title="텃밭학교">
+    </item>
+
+    <item
+        android:id="@+id/hamburger_3"
+        android:icon="@drawable/hamburger3"
+        android:title="마을회관">
+    </item>
+
+    <item
+        android:id="@+id/hamburger_4"
+        android:icon="@drawable/hamburger4"
+        android:title="직거래장터">
+    </item>
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/hamburger_logout"
+        android:title="로그아웃">
+    </item>
+
+
+</menu>
