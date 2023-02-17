@@ -11,14 +11,12 @@
 ### 베란다 텃밭을 위한 각종 정보 제공 및 작물 추천
 ![Image](./Maryfarmassets/function3.png)
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_03.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_04.jpg)
 
 ### 작물 별 쌓이는 재배 일지
 - 날짜별 사진 및 기록들을 작물별로 기록하여, 해당 식물의 성장 기록을 쉽게 볼 수 있도록 지원
 
 ![Image](./Maryfarmassets/function1.png)
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_09.jpg)
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_06.jpg)
 
 ### 작물 생장을 위한 알림 제공
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_12.jpg)
@@ -29,6 +27,9 @@
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_05.jpg)
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_10.jpg)
 
+### 위젯 기능
+![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_15.jpg)
+
 ### 검색 기능
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_13.jpg)
 ![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_14.jpg)
@@ -36,9 +37,6 @@
 ## 🔨Tech Stack
 ![MaryFarm Tech Stack](./Maryfarmassets/MaryFarmTechStack.png)
 ![MaryFarm Tech Stack](./Maryfarmassets/MaryFarmTechStack2.png)
-
-### 위젯 기능
-![Image](./Maryfarmassets/KakaoTalk_20230217_130213374_15.jpg)
 
 ## Member & Role 👪
 | 이름    | 담당 영역                                                        |
@@ -52,7 +50,7 @@
 
 ## Project Info 📜
 ### 👒 마리팜 최종 산출물
-- [마리팜 최종 산출물](https://www.notion.so/81823b0d9494461288f01c3031b3c08d?pvs=4)
+- [마리팜 최종 산출물](https://www.notion.so/c55560fa2039443fb8a8c1ed515743b0)
 ### 📋 API 명세
 - [ 마리팜 API 명세서 ](https://www.notion.so/API-609e8ceec3044dcfb5c6f835f22b741d)
 ### 🛰️ Swagger
