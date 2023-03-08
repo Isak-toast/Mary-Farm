@@ -61,15 +61,19 @@
 
 ### 📚 ERD
 - [ 마리팜 ERD ](https://www.erdcloud.com/d/y5vxexZN8TByiWuGM)
+![ ERD ](Maryfarmassets/ERD.png)
 
 ### ✒️ 와이어 프레임
 - [ 마리팜 와이어 프레임 ](https://www.figma.com/file/WPm9P8dUo68hshfjORAGPR/%EB%A7%88%EB%A6%AC%ED%8C%9C?t=UjCgmziXAdcRs0Xh-0)
+![ Wire Frame ](Maryfarmassets/wire_frame.png)
 
 ### 🔧시스템 구조도
 - [ 마리팜 시스템 아키텍처 ](https://www.notion.so/948b7d60922e46789aeeeff70ecb127b)
+![ System Architecture ](Maryfarmassets/system_architecture.png)
 
 ### 📆 JIRA
 - [ 마리팜 JIRA ](https://ssafy.atlassian.net/jira/software/c/projects/S08P12B308/boards/1454/roadmap)
+![ 번다운 차트 ](Maryfarmassets/burndown.png)
 
 ### 🚜시퀀스 다이어그램
 - [Chat Diagram](https://www.notion.so/Chat-Diagram-c73c103c26df405fbb0b6cb9901e7744)
