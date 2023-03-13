@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"userId":{"$numberInt":"1"}},"name":"userId"}],"uuid":"f817c9e587754f5dbaa6816879c916f1","collectionName":"MyFarmView","type":"collection"}

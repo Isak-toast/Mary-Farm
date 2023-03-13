@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"tagName":{"$numberInt":"1"}},"name":"tagName"}],"uuid":"bd3f39c6097b41b390f1b36038235c0e","collectionName":"TagSearchView","type":"collection"}

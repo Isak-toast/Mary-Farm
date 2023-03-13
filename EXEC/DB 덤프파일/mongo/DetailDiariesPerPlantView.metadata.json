@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"plantId":{"$numberInt":"1"}},"name":"plantId"}],"uuid":"76d23c07f76341a7b5ec93d9b94f59c3","collectionName":"DetailDiariesPerPlantView","type":"collection"}
